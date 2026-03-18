@@ -7,24 +7,20 @@
 <title>Jollof Central | Authentic Party Jollof Rice - Benin City</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-<script src="https://js.paystack.co/v1/inline.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
 <style>
 :root{
-  --bg:#1a0f0d; --bg2:#261612; --bg3:#361a15; --card:#2c1814; --card2:#3d1f18;
-  --gold:#ffb700; --gold2:#e85d04; --gold-soft:rgba(255,183,0,.12); --gold-border:rgba(255,183,0,.25);
-  --jollof-red:#c73e1d; --burnt-orange:#e85d04;
-  --white:#fff8f0; --off-white:#f5e6d3; --muted:#c4a89a; --light:#e8d5c4;
-  --green:#22c55e; --red:#ef4444;
-  --radius:12px; --radius-lg:18px; --radius-xl:24px;
+  --bg:#1a0f0d;--bg2:#261612;--bg3:#361a15;--card:#2c1814;--card2:#3d1f18;
+  --gold:#ffb700;--gold2:#e85d04;--gold-soft:rgba(255,183,0,.12);--gold-border:rgba(255,183,0,.25);
+  --jollof-red:#c73e1d;--burnt-orange:#e85d04;
+  --white:#fff8f0;--off-white:#f5e6d3;--muted:#c4a89a;--light:#e8d5c4;
+  --green:#22c55e;--red:#ef4444;--blue:#3b82f6;
+  --radius:12px;--radius-lg:18px;--radius-xl:24px;
   --nav-h:68px;
   --ease:cubic-bezier(.4,0,.2,1);
   --shadow-sm:0 2px 12px rgba(0,0,0,.3);
   --shadow:0 8px 32px rgba(0,0,0,.4);
   --shadow-lg:0 20px 64px rgba(0,0,0,.55);
 }
-
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
@@ -34,34 +30,33 @@ a{color:inherit;text-decoration:none;}
 ::-webkit-scrollbar-track{background:var(--bg);}
 ::-webkit-scrollbar-thumb{background:var(--gold);border-radius:4px;}
 
+/* ── LAYOUT ── */
 .section{padding:96px 6%;}
 .center{text-align:center;}
-.eyebrow{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
-.eyebrow::before,.eyebrow::after{content:'';flex:1;height:1px;background:var(--gold-border);}
+.gold{color:var(--gold);}
 .section-title{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4vw,3rem);line-height:1.12;margin-bottom:14px;letter-spacing:-.4px;}
 .section-label{display:block;font-size:.72rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;text-align:center;}
 .section-sub{color:var(--muted);font-size:.94rem;line-height:1.78;max-width:520px;margin:0 auto;}
-.accent{color:var(--gold);}
-.accent-line{display:inline-block;border-bottom:2.5px solid var(--gold);padding-bottom:3px;}
 .divider{width:40px;height:2.5px;background:linear-gradient(90deg,var(--gold),transparent);border-radius:2px;margin:16px auto 0;}
 .divider-left{margin:16px 0 0;}
-.chip{display:inline-flex;align-items:center;gap:7px;padding:5px 14px;border-radius:50px;font-size:.72rem;font-weight:700;letter-spacing:.5px;border:1px solid;backdrop-filter:blur(8px);}
-.chip-gold{color:var(--gold);border-color:var(--gold-border);background:var(--gold-soft);}
-.chip-green{color:var(--green);border-color:rgba(34,197,94,.25);background:rgba(34,197,94,.08);}
-
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s var(--ease),transform .6s var(--ease);}
 .reveal.visible{opacity:1;transform:none;}
 
+/* ── BUTTONS ── */
 .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:50px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:.855rem;letter-spacing:.3px;cursor:pointer;border:none;transition:all .22s var(--ease);white-space:nowrap;}
 .btn-gold{background:var(--gold);color:#000;box-shadow:0 4px 16px rgba(255,183,0,.28);}
 .btn-gold:hover{background:#ffbf30;transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,183,0,.42);}
-.btn-ghost{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.28);}
-.btn-ghost:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px);}
-.btn-card{background:var(--card2);color:var(--white);border:1px solid rgba(255,255,255,.08);}
-.btn-card:hover{background:var(--gold);color:#000;border-color:var(--gold);transform:translateY(-2px);}
+.btn-outline{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.35);}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px);}
+.btn-dark{background:var(--card2);color:var(--white);border:1px solid rgba(255,255,255,.12);}
+.btn-dark:hover{background:var(--card);color:var(--gold);border-color:var(--gold-border);transform:translateY(-2px);}
 .btn-wa{background:#25D366;color:#fff;box-shadow:0 4px 16px rgba(37,211,102,.25);}
 .btn-wa:hover{background:#20ba59;transform:translateY(-2px);}
+.btn-red{background:var(--jollof-red);color:#fff;}
+.btn-red:hover{background:#b03418;transform:translateY(-2px);}
+.btn-sm{padding:8px 16px;font-size:.78rem;}
 
+/* ── NAV ── */
 nav{position:fixed;top:0;width:100%;z-index:1000;padding:0 6%;display:flex;align-items:center;justify-content:space-between;height:var(--nav-h);transition:background .35s,box-shadow .35s;}
 nav.scrolled{background:rgba(26,15,13,.95);backdrop-filter:blur(22px);border-bottom:1px solid var(--gold-border);box-shadow:0 4px 28px rgba(0,0,0,.45);}
 .nav-logo{display:flex;align-items:center;gap:11px;}
@@ -70,7 +65,7 @@ nav.scrolled{background:rgba(26,15,13,.95);backdrop-filter:blur(22px);border-bot
 .nav-logo-text span{color:var(--gold);}
 .nav-logo-sub{font-size:8.5px;letter-spacing:2.5px;color:var(--muted);text-transform:uppercase;}
 .nav-links{display:flex;gap:0;list-style:none;}
-.nav-links a{color:var(--light);font-size:.82rem;font-weight:500;padding:7px 12px;border-radius:8px;transition:all .18s;}
+.nav-links a{color:var(--light);font-size:.82rem;font-weight:500;padding:7px 12px;border-radius:8px;transition:all .18s;cursor:pointer;}
 .nav-links a:hover{color:var(--gold);background:var(--gold-soft);}
 .nav-right{display:flex;align-items:center;gap:10px;}
 .nav-phone{display:flex;align-items:center;gap:7px;color:var(--gold);font-size:.82rem;font-weight:700;padding:7px 13px;border-radius:8px;border:1px solid var(--gold-border);background:var(--gold-soft);transition:all .18s;}
@@ -85,17 +80,16 @@ nav.scrolled{background:rgba(26,15,13,.95);backdrop-filter:blur(22px);border-bot
 .hamburger.open span:nth-child(3){transform:translateY(-6.8px) rotate(-45deg);}
 .mobile-menu{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:rgba(26,15,13,.97);backdrop-filter:blur(24px);padding:18px 6% 26px;z-index:999;border-bottom:1px solid var(--gold-border);}
 .mobile-menu.open{display:block;}
-.mobile-menu a{display:flex;align-items:center;gap:14px;padding:12px 0;color:var(--light);font-size:.9rem;font-weight:500;border-bottom:1px solid rgba(255,255,255,.05);transition:color .18s;}
+.mobile-menu a{display:flex;align-items:center;gap:14px;padding:12px 0;color:var(--light);font-size:.9rem;font-weight:500;border-bottom:1px solid rgba(255,255,255,.05);transition:color .18s;cursor:pointer;}
 .mobile-menu a i{width:16px;color:var(--gold);font-size:.85rem;}
 .mobile-menu a:hover{color:var(--gold);}
-.mobile-reserve-btn{background:linear-gradient(135deg,var(--jollof-red),var(--burnt-orange))!important;color:#fff!important;border-radius:10px!important;margin-top:8px!important;padding:13px 16px!important;border-bottom:none!important;font-weight:700!important;justify-content:center!important;}
 @media(max-width:900px){
   .nav-links,.nav-phone{display:none;}
   .hamburger{display:flex;}
-  .nav-reserve-btn{display:none;}
-  .nav-auth-btn, .nav-user-chip{display:none !important;}
+  .nav-auth-btn,.nav-user-chip{display:none !important;}
 }
 
+/* ── HERO ── */
 #home{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:var(--nav-h) 6% 0;overflow:hidden;}
 .hero-bg{position:absolute;inset:0;background:url('https://kimi-web-img.moonshot.cn/img/sisijemimah.com/ea3b296a20eafdd56735d94e2c555ef668118387.jpg') center/cover no-repeat;}
 .hero-bg::before{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(26,15,13,.95) 0%,rgba(26,15,13,.7) 50%,rgba(26,15,13,.4) 100%);}
@@ -118,6 +112,7 @@ nav.scrolled{background:rgba(26,15,13,.95);backdrop-filter:blur(22px);border-bot
 .scroll-wire{width:1.5px;height:26px;background:linear-gradient(var(--gold),transparent);}
 @keyframes bob{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(-9px);}}
 
+/* ── ABOUT ── */
 #about{background:var(--bg2);}
 .feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:52px;}
 @media(max-width:900px){.feature-grid{grid-template-columns:1fr 1fr;}}
@@ -137,9 +132,9 @@ nav.scrolled{background:rgba(26,15,13,.95);backdrop-filter:blur(22px);border-bot
 .story-badge{position:absolute;bottom:18px;left:18px;z-index:1;display:flex;align-items:center;gap:10px;background:rgba(26,15,13,.8);border:1px solid var(--gold-border);border-radius:10px;padding:10px 14px;backdrop-filter:blur(12px);}
 .story-badge i{color:var(--gold);}
 .story-badge span{font-size:.8rem;font-weight:600;}
-.story-text h2{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,3vw,2.3rem);margin-bottom:18px;letter-spacing:-.3px;}
 .story-text p{color:var(--muted);line-height:1.85;margin-bottom:16px;font-size:.92rem;}
 
+/* ── MENU ── */
 #menu{background:var(--bg);}
 .filter-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:34px 0;}
 .filter-btn{padding:8px 18px;border-radius:50px;border:1.5px solid rgba(255,255,255,.1);background:transparent;color:var(--light);font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:600;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:7px;}
@@ -168,7 +163,7 @@ nav.scrolled{background:rgba(26,15,13,.95);backdrop-filter:blur(22px);border-bot
 .add-btn:hover{transform:scale(1.1);background:#ffbf30;}
 .menu-more{text-align:center;margin-top:44px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
 
-#testimonials{background:var(--bg2);}
+/* ── TESTIMONIALS ── */
 .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px;}
 @media(max-width:960px){.testimonials-grid{grid-template-columns:1fr;}}
 .testimonial-card{background:var(--card);border-radius:var(--radius);padding:24px;border:1px solid rgba(255,255,255,.06);transition:all .3s var(--ease);}
@@ -180,8 +175,8 @@ nav.scrolled{background:rgba(26,15,13,.95);backdrop-filter:blur(22px);border-bot
 .author-name{font-weight:700;font-size:.88rem;}
 .author-meta{font-size:.72rem;color:var(--muted);}
 
-#gallery{background:#120b08;}
-.gallery-grid{columns:3;gap:12px;}
+/* ── GALLERY ── */
+.gallery-grid{columns:3;gap:12px;margin-top:44px;}
 @media(max-width:700px){.gallery-grid{columns:2;}}
 @media(max-width:420px){.gallery-grid{columns:1;}}
 .gallery-item{break-inside:avoid;margin-bottom:12px;border-radius:10px;overflow:hidden;position:relative;cursor:pointer;}
@@ -190,13 +185,13 @@ nav.scrolled{background:rgba(26,15,13,.95);backdrop-filter:blur(22px);border-bot
 .gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,15,13,.75),rgba(26,15,13,.1) 55%);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .28s;}
 .gallery-item:hover .gallery-overlay{opacity:1;}
 .gallery-zoom{width:44px;height:44px;border-radius:10px;border:1px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;font-size:1rem;color:#fff;backdrop-filter:blur(8px);background:rgba(255,255,255,.1);}
-.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:2000;align-items:center;justify-content:center;}
+.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:3000;align-items:center;justify-content:center;}
 .lightbox.open{display:flex;}
-.lightbox img{max-width:90vw;max-height:86vh;border-radius:12px;box-shadow:0 0 80px rgba(0,0,0,.8);}
+.lightbox img{max-width:90vw;max-height:86vh;border-radius:12px;}
 .lightbox-close{position:absolute;top:18px;right:18px;width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#fff;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;}
-.lightbox-close:hover{background:var(--gold-soft);color:var(--gold);border-color:var(--gold-border);}
+.lightbox-close:hover{background:var(--gold-soft);color:var(--gold);}
 
-#contact{background:var(--bg);}
+/* ── CONTACT ── */
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;margin-top:50px;}
 @media(max-width:780px){.contact-grid{grid-template-columns:1fr;gap:36px;}}
 .contact-item{display:flex;gap:15px;align-items:flex-start;margin-bottom:22px;}
@@ -208,6 +203,7 @@ nav.scrolled{background:rgba(26,15,13,.95);backdrop-filter:blur(22px);border-bot
 .map-wrap iframe{width:100%;height:340px;display:block;border:0;}
 .open-badge{display:inline-flex;align-items:center;gap:7px;padding:6px 15px;background:rgba(34,197,94,.09);border:1px solid rgba(34,197,94,.22);border-radius:50px;color:var(--green);font-size:.76rem;font-weight:700;margin-top:12px;}
 
+/* ── FOOTER ── */
 footer{background:#0d0706;padding:60px 6% 28px;border-top:1px solid rgba(255,255,255,.05);}
 .footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1.1fr 1.2fr;gap:40px;margin-bottom:48px;}
 @media(max-width:960px){.footer-grid{grid-template-columns:1fr 1fr;gap:32px;}}
@@ -219,16 +215,18 @@ footer{background:#0d0706;padding:60px 6% 28px;border-top:1px solid rgba(255,255
 .social-link:hover{background:var(--gold);color:#000;border-color:var(--gold);}
 .footer-col h4{font-size:.86rem;font-weight:700;margin-bottom:16px;}
 .footer-links{list-style:none;display:flex;flex-direction:column;gap:10px;}
-.footer-links a{color:var(--muted);font-size:.83rem;transition:all .18s;display:flex;align-items:center;gap:8px;}
+.footer-links a{color:var(--muted);font-size:.83rem;transition:all .18s;display:flex;align-items:center;gap:8px;cursor:pointer;}
 .footer-links a i{color:var(--gold);font-size:.68rem;}
 .footer-links a:hover{color:var(--gold);padding-left:3px;}
 .footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:22px;border-top:1px solid rgba(255,255,255,.05);flex-wrap:wrap;gap:10px;}
 .footer-bottom p{font-size:.76rem;color:var(--muted);}
 
-.toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--card2);border:1px solid var(--gold-border);border-radius:50px;padding:11px 22px;font-size:.82rem;color:var(--white);z-index:3000;transition:transform .32s var(--ease);box-shadow:var(--shadow);display:flex;align-items:center;gap:9px;white-space:nowrap;backdrop-filter:blur(12px);}
+/* ── TOAST ── */
+.toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--card2);border:1px solid var(--gold-border);border-radius:50px;padding:11px 22px;font-size:.82rem;color:var(--white);z-index:9999;transition:transform .32s var(--ease);box-shadow:var(--shadow);display:flex;align-items:center;gap:9px;white-space:nowrap;backdrop-filter:blur(12px);}
 .toast.show{transform:translateX(-50%) translateY(0);}
 .toast i{color:var(--gold);}
 
+/* ── CART ── */
 .cart-panel{position:fixed;right:-100%;top:0;bottom:0;width:380px;max-width:100vw;background:var(--bg2);z-index:1500;transition:right .36s var(--ease);border-left:1px solid rgba(255,255,255,.07);box-shadow:-14px 0 52px rgba(0,0,0,.6);display:flex;flex-direction:column;}
 .cart-panel.open{right:0;}
 .cart-header{padding:20px 22px;border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:space-between;}
@@ -257,63 +255,102 @@ footer{background:#0d0706;padding:60px 6% 28px;border-top:1px solid rgba(255,255
 .cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:1400;display:none;backdrop-filter:blur(3px);}
 .cart-overlay.open{display:block;}
 
-.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:2500;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(8px);}
+/* ── MODAL BASE ── */
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:2000;align-items:flex-start;justify-content:center;padding:20px;backdrop-filter:blur(8px);overflow-y:auto;}
 .modal-bg.open{display:flex;}
-.modal{background:var(--card);border-radius:var(--radius-lg);max-width:520px;width:100%;padding:34px;border:1px solid rgba(255,255,255,.08);position:relative;max-height:90vh;overflow-y:auto;box-shadow:var(--shadow-lg);}
-.modal h3{font-family:'Playfair Display',serif;font-size:1.55rem;margin-bottom:7px;letter-spacing:-.3px;}
-.modal>p{color:var(--muted);font-size:.86rem;line-height:1.65;margin-bottom:20px;}
+.modal{background:var(--card);border-radius:var(--radius-lg);max-width:520px;width:100%;padding:34px;border:1px solid rgba(255,255,255,.08);position:relative;box-shadow:var(--shadow-lg);margin:auto;}
 .modal-close{position:absolute;top:14px;right:14px;background:var(--bg2);border:1px solid rgba(255,255,255,.08);color:var(--muted);font-size:.88rem;cursor:pointer;transition:all .18s;width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:8px;}
 .modal-close:hover{color:var(--gold);border-color:var(--gold-border);}
+.modal-title{font-family:'Playfair Display',serif;font-size:1.45rem;margin-bottom:6px;letter-spacing:-.3px;}
+.modal-sub{color:var(--muted);font-size:.84rem;margin-bottom:22px;line-height:1.6;}
 
+/* form inputs */
+.form-label{font-size:.72rem;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;margin-top:14px;display:block;}
+.form-input{width:100%;padding:11px 14px;border-radius:9px;border:1.5px solid rgba(255,255,255,.08);background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;font-size:.88rem;outline:none;transition:border-color .18s,box-shadow .18s;}
+.form-input:focus{border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-soft);}
+.form-input::placeholder{color:var(--muted);}
+.form-input:disabled{opacity:.5;cursor:not-allowed;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+@media(max-width:480px){.form-row{grid-template-columns:1fr;}}
+
+/* ── CHECKOUT MODAL ── */
 .pay-modal-header{display:flex;align-items:center;gap:12px;margin-bottom:22px;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.08);}
 .pay-modal-icon{width:46px;height:46px;background:var(--gold);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;color:#000;flex-shrink:0;}
 .pay-modal-title{font-family:'Playfair Display',serif;font-size:1.35rem;letter-spacing:-.2px;}
 .pay-modal-sub{font-size:.78rem;color:var(--muted);margin-top:2px;}
-
-.pay-order-summary{background:var(--bg2);border-radius:10px;padding:14px 16px;margin-bottom:20px;border:1px solid rgba(255,255,255,.06);}
+.pay-order-summary{background:var(--bg2);border-radius:10px;padding:14px 16px;margin-bottom:16px;border:1px solid rgba(255,255,255,.06);}
 .pay-summary-row{display:flex;justify-content:space-between;font-size:.82rem;padding:4px 0;}
 .pay-summary-row.total{font-weight:700;font-size:.92rem;color:var(--gold);border-top:1px solid rgba(255,255,255,.07);margin-top:6px;padding-top:10px;}
-
-.pay-method-tabs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px;}
+.pay-method-tabs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px;}
 .pay-method-tab{padding:14px 12px;border-radius:var(--radius);border:1.5px solid rgba(255,255,255,.08);background:var(--bg);cursor:pointer;transition:all .2s;text-align:center;}
 .pay-method-tab.active{border-color:var(--gold);background:var(--gold-soft);}
 .pay-method-tab i{font-size:1.3rem;color:var(--gold);display:block;margin-bottom:5px;}
 .pay-method-tab span{font-size:.76rem;font-weight:700;display:block;}
 .pay-method-tab small{font-size:.68rem;color:var(--muted);}
-
-.paystack-badge{display:flex;align-items:center;justify-content:center;gap:7px;padding:9px;background:var(--bg);border-radius:9px;border:1px solid rgba(255,255,255,.06);margin-bottom:16px;font-size:.74rem;color:var(--muted);}
-.paystack-badge strong{color:var(--white);}
-
-.pod-note{background:rgba(255,183,0,.08);border:1px solid rgba(255,183,0,.2);border-radius:9px;padding:12px 15px;margin-bottom:18px;font-size:.8rem;color:var(--light);display:flex;gap:9px;align-items:flex-start;line-height:1.55;}
-.pod-note i{color:var(--gold);margin-top:2px;flex-shrink:0;}
-
-.order-type{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:26px;}
+.order-type{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:22px;}
 .order-type-btn{padding:18px 14px;border-radius:var(--radius);border:1.5px solid rgba(255,255,255,.08);background:var(--bg);text-align:center;cursor:pointer;transition:all .2s var(--ease);}
-.order-type-btn.active{border-color:var(--gold);background:var(--gold-soft);box-shadow:0 0 0 1px var(--gold-border);}
-.order-type-btn:hover:not(.active){border-color:var(--gold-border);}
+.order-type-btn.active{border-color:var(--gold);background:var(--gold-soft);}
 .ot-icon{font-size:1.65rem;margin-bottom:8px;color:var(--gold);}
 .order-type-btn h4{font-size:.9rem;font-weight:700;margin-bottom:3px;}
 .order-type-btn p{font-size:.74rem;color:var(--muted);}
 .order-type-btn .price{font-size:.74rem;color:var(--gold);font-weight:700;margin-top:4px;}
-
-.form-label{font-size:.72rem;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;margin-top:18px;display:block;}
-.form-input{width:100%;padding:12px 15px;border-radius:9px;border:1.5px solid rgba(255,255,255,.08);background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;font-size:.88rem;outline:none;transition:border-color .18s,box-shadow .18s;}
-.form-input:focus{border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-soft);}
-.form-input::placeholder{color:var(--muted);}
-
-.est-time{background:var(--bg);border-radius:9px;padding:11px 15px;margin:14px 0;display:flex;align-items:center;gap:9px;color:var(--gold);font-size:.84rem;border:1px solid rgba(255,255,255,.06);}
+.est-time{background:var(--bg);border-radius:9px;padding:11px 15px;margin-top:10px;display:flex;align-items:center;gap:9px;color:var(--gold);font-size:.84rem;border:1px solid rgba(255,255,255,.06);}
 .est-time span{color:var(--white);font-weight:700;}
-.pickup-info{background:var(--bg);border-radius:9px;padding:15px;margin:14px 0;border:1px solid rgba(255,255,255,.06);}
+.pickup-info{background:var(--bg);border-radius:9px;padding:15px;margin-top:10px;border:1px solid rgba(255,255,255,.06);}
 .pickup-info div{font-size:.84rem;color:var(--muted);display:flex;align-items:center;gap:9px;padding:3px 0;}
 .pickup-info i{color:var(--gold);width:15px;}
 .pickup-free{color:var(--green) !important;font-weight:700;}
+.info-box{display:flex;align-items:flex-start;gap:9px;padding:12px 15px;border-radius:9px;margin-bottom:14px;font-size:.8rem;color:var(--light);line-height:1.55;}
+.info-box i{margin-top:2px;flex-shrink:0;}
+.info-box-gold{background:rgba(255,183,0,.08);border:1px solid rgba(255,183,0,.2);}
+.info-box-gold i{color:var(--gold);}
+.info-box-blue{background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2);}
+.info-box-blue i{color:var(--blue);}
+.bank-details{background:var(--bg);border-radius:10px;padding:14px 16px;margin-bottom:14px;border:1px solid rgba(255,255,255,.06);}
+.bank-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;font-size:.83rem;border-bottom:1px solid rgba(255,255,255,.04);}
+.bank-row:last-child{border-bottom:none;}
+.bank-row .lbl{color:var(--muted);}
+.bank-row .val{font-weight:700;}
+.copy-btn{background:var(--gold-soft);border:1px solid var(--gold-border);color:var(--gold);padding:2px 10px;border-radius:6px;font-size:.7rem;font-weight:700;cursor:pointer;transition:all .18s;margin-left:8px;}
+.copy-btn:hover{background:var(--gold);color:#000;}
 
+/* ── PROFILE MODAL ── */
+.profile-avatar-wrap{display:flex;flex-direction:column;align-items:center;margin-bottom:24px;}
+.profile-avatar{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--jollof-red),var(--burnt-orange));display:flex;align-items:center;justify-content:center;font-size:1.6rem;font-weight:700;color:#fff;margin-bottom:10px;border:3px solid var(--gold-border);}
+.profile-name{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;}
+.profile-email{font-size:.78rem;color:var(--muted);}
+
+/* ── ORDER HISTORY ── */
+.history-empty{text-align:center;padding:48px 16px;color:var(--muted);}
+.history-empty i{font-size:2.8rem;color:rgba(255,183,0,.15);margin-bottom:12px;display:block;}
+.history-empty p{font-size:.9rem;line-height:1.6;}
+.order-card{background:var(--bg2);border-radius:12px;border:1px solid rgba(255,255,255,.06);margin-bottom:14px;overflow:hidden;transition:border-color .2s;}
+.order-card:hover{border-color:var(--gold-border);}
+.order-card-head{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;cursor:pointer;gap:12px;}
+.order-card-left{display:flex;flex-direction:column;gap:4px;}
+.order-ref{font-size:.8rem;font-weight:700;color:var(--gold);}
+.order-date{font-size:.74rem;color:var(--muted);}
+.order-card-right{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.order-total-badge{font-size:.88rem;font-weight:700;}
+.order-status{font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:50px;}
+.status-confirmed{background:rgba(34,197,94,.12);color:var(--green);border:1px solid rgba(34,197,94,.22);}
+.status-pending{background:rgba(255,183,0,.1);color:var(--gold);border:1px solid var(--gold-border);}
+.order-chevron{font-size:.7rem;color:var(--muted);transition:transform .22s;}
+.order-chevron.open{transform:rotate(180deg);}
+.order-card-body{display:none;padding:0 16px 16px;border-top:1px solid rgba(255,255,255,.05);}
+.order-card-body.open{display:block;}
+.order-item-row{display:flex;justify-content:space-between;font-size:.82rem;padding:5px 0;color:var(--light);}
+.order-item-row .item-name{color:var(--muted);}
+.order-meta-row{display:flex;gap:8px;align-items:center;font-size:.78rem;color:var(--muted);padding-top:10px;margin-top:6px;border-top:1px solid rgba(255,255,255,.05);flex-wrap:wrap;}
+.order-meta-row i{color:var(--gold);}
+.order-reorder-btn{margin-top:12px;}
+
+/* ── AUTH MODAL ── */
 .auth-modal-bg{position:fixed;inset:0;z-index:2000;background:rgba(10,5,0,.88);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .35s var(--ease);}
 .auth-modal-bg.open{opacity:1;pointer-events:all;}
 .auth-modal{width:100%;max-width:460px;background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:36px 32px;position:relative;max-height:90vh;overflow-y:auto;transform:scale(.94) translateY(20px);transition:transform .35s var(--ease);}
 .auth-modal-bg.open .auth-modal{transform:scale(1) translateY(0);}
 @media(max-width:480px){.auth-modal{padding:28px 20px;border-radius:18px;}}
-
 .auth-close{position:absolute;top:16px;right:16px;width:34px;height:34px;border-radius:10px;border:none;background:rgba(255,255,255,.07);color:var(--muted);font-size:.85rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;}
 .auth-close:hover{background:rgba(255,255,255,.13);color:var(--white);}
 .auth-logo{display:flex;align-items:center;gap:11px;margin-bottom:24px;}
@@ -326,7 +363,7 @@ footer{background:#0d0706;padding:60px 6% 28px;border-top:1px solid rgba(255,255
 .auth-heading{margin-bottom:22px;}
 .auth-heading h2{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;line-height:1.2;margin-bottom:5px;}
 .auth-heading p{font-size:.8rem;color:var(--muted);line-height:1.55;}
-.auth-field{margin-bottom:13px;position:relative;}
+.auth-field{margin-bottom:13px;}
 .auth-field label{display:block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--muted);margin-bottom:5px;}
 .auth-field label span{color:var(--red);}
 .auth-input-wrap{position:relative;display:flex;align-items:center;}
@@ -334,44 +371,37 @@ footer{background:#0d0706;padding:60px 6% 28px;border-top:1px solid rgba(255,255
 .auth-input-wrap input{width:100%;background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.08);border-radius:10px;padding:10px 13px 10px 36px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:.85rem;outline:none;transition:all .22s var(--ease);}
 .auth-input-wrap input::placeholder{color:rgba(255,247,241,.25);}
 .auth-input-wrap input:focus{border-color:var(--gold);background:rgba(255,183,0,.06);box-shadow:0 0 0 3px var(--gold-soft);}
-.auth-input-wrap input:focus ~ .auth-lead,.auth-input-wrap:focus-within .auth-lead{color:var(--gold);}
+.auth-input-wrap:focus-within .auth-lead{color:var(--gold);}
 .auth-eye{position:absolute;right:11px;background:none;border:none;color:var(--muted);cursor:pointer;font-size:.78rem;padding:4px;transition:color .2s;z-index:2;}
 .auth-eye:hover{color:var(--gold);}
-.auth-err{font-size:.7rem;color:var(--red);margin-top:4px;display:none;align-items:center;gap:4px;}
-.auth-err.show{display:flex;}
 .auth-extras{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:8px;}
 .auth-check-wrap{display:flex;align-items:center;gap:7px;cursor:pointer;}
 .auth-check-wrap input[type="checkbox"]{appearance:none;width:15px;height:15px;border-radius:4px;border:1.5px solid rgba(255,255,255,.18);background:rgba(255,255,255,.05);cursor:pointer;position:relative;transition:all .2s;flex-shrink:0;}
 .auth-check-wrap input[type="checkbox"]:checked{background:var(--gold);border-color:var(--gold);}
 .auth-check-wrap input[type="checkbox"]:checked::after{content:'✓';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:.7rem;color:#000;font-weight:700;}
 .auth-check-lbl{font-size:.78rem;color:var(--muted);user-select:none;}
-.auth-forgot{font-size:.78rem;color:var(--gold);text-decoration:none;font-weight:600;background:none;border:none;font-family:'DM Sans',sans-serif;cursor:pointer;padding:0;transition:color .2s;}
+.auth-forgot{font-size:.78rem;color:var(--gold);font-weight:600;background:none;border:none;font-family:'DM Sans',sans-serif;cursor:pointer;padding:0;}
 .auth-forgot:hover{color:#ffbf30;}
-.auth-submit{width:100%;padding:13px;border:none;border-radius:12px;background:linear-gradient(135deg,var(--jollof-red) 0%,var(--burnt-orange) 100%);background-size:200% 100%;background-position:0% 0%;color:#fff;font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:700;cursor:pointer;transition:all .4s var(--ease);display:flex;align-items:center;justify-content:center;gap:9px;position:relative;overflow:hidden;letter-spacing:.2px;}
-.auth-submit:hover{background-position:100% 0%;box-shadow:0 8px 28px rgba(199,62,29,.4);transform:translateY(-1px);}
-.auth-submit:active{transform:translateY(0);}
+.auth-submit{width:100%;padding:13px;border:none;border-radius:12px;background:linear-gradient(135deg,var(--jollof-red),var(--burnt-orange));color:#fff;font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:700;cursor:pointer;transition:all .3s var(--ease);display:flex;align-items:center;justify-content:center;gap:9px;}
+.auth-submit:hover{box-shadow:0 8px 28px rgba(199,62,29,.4);transform:translateY(-1px);}
 .auth-submit.a-loading{pointer-events:none;opacity:.75;}
 .auth-submit .a-spinner{width:17px;height:17px;border:2.5px solid rgba(255,255,255,.2);border-top-color:#fff;border-radius:50%;animation:authSpin .7s linear infinite;display:none;}
 .auth-submit.a-loading .a-spinner{display:block;}
 .auth-submit.a-loading .a-btn-text,.auth-submit.a-loading .a-btn-icon{display:none;}
 @keyframes authSpin{to{transform:rotate(360deg);}}
-.auth-or{display:flex;align-items:center;gap:10px;margin:16px 0;color:var(--muted);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.6px;}
-.auth-or::before,.auth-or::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.07);}
-.auth-socials{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:16px;}
-.auth-social-btn{padding:9px;border-radius:9px;border:1.5px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);color:var(--light);font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;transition:all .2s var(--ease);}
-.auth-social-btn:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.18);}
 .auth-switch{text-align:center;font-size:.78rem;color:var(--muted);margin-top:14px;}
-.auth-switch-btn{color:var(--gold);font-weight:700;cursor:pointer;background:none;border:none;font-family:'DM Sans',sans-serif;font-size:.78rem;padding:0;transition:color .2s;}
-.auth-switch-btn:hover{color:#ffbf30;}
+.auth-switch-btn{color:var(--gold);font-weight:700;cursor:pointer;background:none;border:none;font-family:'DM Sans',sans-serif;font-size:.78rem;padding:0;}
+.auth-terms{font-size:.7rem;color:var(--muted);text-align:center;margin-top:10px;line-height:1.5;}
 
+/* ── NAV USER ── */
 .nav-auth-btn{display:flex;align-items:center;gap:7px;padding:8px 16px;border-radius:50px;border:1.5px solid rgba(255,183,0,.35);background:rgba(255,183,0,.08);color:var(--gold);font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:600;cursor:pointer;transition:all .22s var(--ease);white-space:nowrap;}
 .nav-auth-btn:hover{background:rgba(255,183,0,.18);border-color:var(--gold);}
-.nav-user-chip{display:none;align-items:center;gap:8px;padding:5px 14px 5px 5px;border-radius:50px;border:1.5px solid rgba(34,197,94,.25);background:rgba(34,197,94,.08);cursor:pointer;transition:all .22s var(--ease);}
-.nav-user-chip:hover{background:rgba(34,197,94,.15);}
+.nav-user-chip{display:none;align-items:center;gap:8px;padding:5px 14px 5px 5px;border-radius:50px;border:1.5px solid rgba(34,197,94,.25);background:rgba(34,197,94,.08);cursor:pointer;transition:all .22s;}
 .nav-user-chip.visible{display:flex;}
+.nav-user-chip:hover{background:rgba(34,197,94,.15);}
 .nav-user-avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--jollof-red),var(--burnt-orange));display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;color:#fff;}
 .nav-user-name{font-size:.78rem;font-weight:600;color:#4ade80;}
-.nav-user-dropdown{position:absolute;top:calc(var(--nav-h) - 6px);right:0;background:var(--card);border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:8px;min-width:180px;box-shadow:var(--shadow);display:none;z-index:1500;}
+.nav-user-dropdown{position:absolute;top:calc(var(--nav-h) - 6px);right:0;background:var(--card);border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:8px;min-width:190px;box-shadow:var(--shadow);display:none;z-index:1500;}
 .nav-user-dropdown.open{display:block;}
 .nav-dropdown-item{display:flex;align-items:center;gap:9px;padding:9px 12px;border-radius:9px;font-size:.8rem;color:var(--light);cursor:pointer;transition:background .15s;border:none;background:none;width:100%;text-align:left;font-family:'DM Sans',sans-serif;}
 .nav-dropdown-item:hover{background:rgba(255,255,255,.06);}
@@ -380,66 +410,26 @@ footer{background:#0d0706;padding:60px 6% 28px;border-top:1px solid rgba(255,255
 .nav-dropdown-item.logout{color:var(--red);}
 .nav-dropdown-item.logout i{color:var(--red);}
 
+/* ── COOKIE ── */
 .cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:2500;background:var(--bg3);border-top:1px solid rgba(255,183,0,.25);padding:16px 6%;display:flex;align-items:center;gap:18px;flex-wrap:wrap;transform:translateY(100%);transition:transform .45s var(--ease);box-shadow:0 -8px 32px rgba(0,0,0,.5);}
 .cookie-banner.show{transform:translateY(0);}
 .cookie-banner-text{flex:1;min-width:220px;}
 .cookie-banner-text p{font-size:.8rem;color:var(--muted);line-height:1.6;}
 .cookie-banner-text strong{color:var(--white);}
-.cookie-banner-text a{color:var(--gold);text-decoration:none;}
-.cookie-btn-accept{padding:9px 20px;border-radius:50px;border:none;background:var(--gold);color:#000;font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:700;cursor:pointer;transition:all .2s;white-space:nowrap;}
-.cookie-btn-accept:hover{background:#ffbf30;transform:translateY(-1px);}
-.cookie-btn-manage{padding:9px 20px;border-radius:50px;background:transparent;border:1.5px solid rgba(255,255,255,.15);color:var(--light);font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap;text-decoration:none;display:inline-flex;align-items:center;}
-.cookie-btn-manage:hover{border-color:var(--gold);color:var(--gold);}
-.cookie-btn-reject{padding:9px 16px;border-radius:50px;background:transparent;border:none;color:var(--muted);font-family:'DM Sans',sans-serif;font-size:.78rem;cursor:pointer;transition:color .2s;white-space:nowrap;}
+.cookie-btn-accept{padding:9px 20px;border-radius:50px;border:none;background:var(--gold);color:#000;font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:700;cursor:pointer;transition:all .2s;}
+.cookie-btn-accept:hover{background:#ffbf30;}
+.cookie-btn-reject{padding:9px 16px;border-radius:50px;background:transparent;border:none;color:var(--muted);font-family:'DM Sans',sans-serif;font-size:.78rem;cursor:pointer;transition:color .2s;}
 .cookie-btn-reject:hover{color:var(--red);}
 
-.announce-popup{position:fixed;bottom:20px;right:20px;z-index:99997;background:linear-gradient(135deg,#1a1008,#261510);border:1px solid rgba(255,183,0,.35);border-radius:16px;padding:18px 20px;max-width:320px;width:calc(100vw - 40px);box-shadow:0 8px 32px rgba(0,0,0,.5);animation:popIn .4s cubic-bezier(.175,.885,.32,1.275);}
-@keyframes popIn{from{opacity:0;transform:translateY(20px) scale(.95);}to{opacity:1;transform:none;}}
-.announce-popup-title{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:800;color:var(--gold);margin-bottom:6px;display:flex;align-items:center;gap:8px;}
-.announce-popup-msg{font-size:.82rem;color:#ccc;line-height:1.55;margin-bottom:12px;}
-.announce-popup-close{position:absolute;top:10px;right:10px;background:rgba(255,255,255,.08);border:none;color:#aaa;width:24px;height:24px;border-radius:6px;font-size:.9rem;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+/* ── TABS ── */
+.tab-bar{display:flex;gap:4px;background:rgba(255,255,255,.04);border-radius:10px;padding:4px;margin-bottom:20px;border:1px solid rgba(255,255,255,.06);}
+.tab-btn{flex:1;padding:8px;border:none;background:none;border-radius:7px;font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:600;color:var(--muted);cursor:pointer;transition:all .25s;}
+.tab-btn.active{background:var(--gold);color:#000;}
 </style>
-<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-<script>
-  window.OneSignalDeferred = window.OneSignalDeferred || [];
-  OneSignalDeferred.push(async function(OneSignal) {
-    await OneSignal.init({
-      appId: "3faba822-1bcf-483b-adb6-711065774fcd",
-      safari_web_id: "web.onesignal.auto.34e4584e-b851-4129-9188-f0d7c790d3df",
-      notifyButton: { enable: true },
-    });
-    async function savePlayerId() {
-      try {
-        const playerId = OneSignal.User.PushSubscription.id;
-        if (!playerId) return;
-        window._customerPlayerId = playerId;
-        localStorage.setItem('jc_player_id', playerId);
-        const token = localStorage.getItem('jc_customer_token') || null;
-        fetch('/api/settings/player-id', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ playerId, token }),
-        }).catch(() => {});
-      } catch(e) {}
-    }
-    OneSignal.User.PushSubscription.addEventListener('change', async (e) => {
-      if (e.current.optedIn) await savePlayerId();
-    });
-    if (OneSignal.User.PushSubscription.optedIn) await savePlayerId();
-    const stored = localStorage.getItem('jc_player_id');
-    if (stored) window._customerPlayerId = stored;
-  });
-</script>
-<base target="_blank">
 </head>
 <body>
 
-<div id="orderingDisabledBanner" style="display:none;position:fixed;top:0;left:0;right:0;z-index:99998;background:linear-gradient(135deg,var(--jollof-red),var(--burnt-orange));color:#fff;padding:12px 20px;font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:600;align-items:center;justify-content:center;gap:12px;box-shadow:0 2px 16px rgba(0,0,0,.4);text-align:center;">
-  <i class="fa-solid fa-ban"></i>
-  <span id="orderingDisabledMsg">Online ordering is currently unavailable. Please call us to place your order.</span>
-  <a href="tel:08054644895" style="background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);color:#fff;padding:4px 14px;border-radius:20px;text-decoration:none;font-size:.78rem;white-space:nowrap;"><i class="fa-solid fa-phone"></i> Call Us</a>
-</div>
-
+<!-- NAV -->
 <nav id="navbar">
   <a href="#home" class="nav-logo">
     <div class="nav-logo-icon"><i class="fa-solid fa-fire"></i></div>
@@ -469,20 +459,22 @@ footer{background:#0d0706;padding:60px 6% 28px;border-top:1px solid rgba(255,255
       <div class="nav-user-chip" id="navUserChip" onclick="toggleUserDropdown()">
         <div class="nav-user-avatar" id="navUserAvatar">?</div>
         <span class="nav-user-name" id="navUserName">Account</span>
-        <i class="fa-solid fa-chevron-down"></i>
+        <i class="fa-solid fa-chevron-down" style="font-size:.6rem;color:#4ade80;"></i>
       </div>
       <div class="nav-user-dropdown" id="navUserDropdown">
         <button class="nav-dropdown-item" onclick="openProfileModal()"><i class="fa-solid fa-user"></i> My Profile</button>
         <button class="nav-dropdown-item" onclick="openOrderHistoryModal()"><i class="fa-solid fa-clock-rotate-left"></i> Order History</button>
-        <button class="nav-dropdown-item" onclick="openAddressModal()"><i class="fa-solid fa-location-dot"></i> Saved Addresses</button>
         <div class="nav-dropdown-sep"></div>
         <button class="nav-dropdown-item logout" onclick="signOut()"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</button>
       </div>
     </div>
-    <div class="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></div>
+    <div class="hamburger" id="hamburger" onclick="toggleMobile()">
+      <span></span><span></span><span></span>
+    </div>
   </div>
 </nav>
 
+<!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="#home" onclick="closeMobile()"><i class="fa-solid fa-house"></i>Home</a>
   <a href="#about" onclick="closeMobile()"><i class="fa-solid fa-circle-info"></i>About</a>
@@ -490,21 +482,22 @@ footer{background:#0d0706;padding:60px 6% 28px;border-top:1px solid rgba(255,255
   <a href="#gallery" onclick="closeMobile()"><i class="fa-solid fa-images"></i>Gallery</a>
   <a href="#menu" onclick="closeMobile();setTimeout(()=>toggleCart(),300)"><i class="fa-solid fa-truck-fast"></i>Order Online</a>
   <a href="#contact" onclick="closeMobile()"><i class="fa-solid fa-location-dot"></i>Contact</a>
-  <button id="mobileAuthLink" onclick="closeMobile();handleMobileAccount();" style="display:flex;align-items:center;gap:14px;padding:12px 0;color:var(--light);font-size:.9rem;font-weight:500;border-bottom:1px solid rgba(255,255,255,.05);background:none;border-top:none;border-left:none;border-right:none;width:100%;cursor:pointer;font-family:inherit;"><i class="fa-regular fa-user" style="width:16px;color:var(--gold);font-size:.85rem;"></i>Sign In / My Account</button>
+  <a onclick="closeMobile();handleMobileAccount();"><i class="fa-regular fa-user"></i><span id="mobileAccountLabel">Sign In / My Account</span></a>
 </div>
 
+<!-- HERO -->
 <section id="home">
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <div class="hero-pill"><i class="fa-solid fa-fire"></i> Benin's Best Party Jollof • Since 2020</div>
+    <div class="hero-pill"><i class="fa-solid fa-fire"></i> Benin's Best Party Jollof · Since 2020</div>
     <h1 class="hero-title">Taste the <span>Legend</span></h1>
     <p class="hero-sub">Authentic firewood-cooked party jollof rice that transports you straight to Lagos celebrations. Fresh, chic, and unforgettable.</p>
     <div class="hero-badges">
       <div class="hero-badge">
         <span class="hero-stars-sm"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
-        <span style="font-weight:700">5.0</span><span style="color:var(--muted);font-size:.75rem">(Top Rated)</span>
+        <span style="font-weight:700">5.0</span><span style="color:var(--muted);font-size:.75rem">&nbsp;(Top Rated)</span>
       </div>
-      <div class="hero-badge"><span class="dot-green"></span> Open until 8:00 PM</div>
+      <div class="hero-badge"><span class="dot-green"></span>&nbsp;Open until 8:00 PM</div>
     </div>
     <div class="hero-btn-row">
       <a href="#menu" class="btn btn-gold"><i class="fa-solid fa-utensils"></i> View Menu</a>
@@ -518,6 +511,7 @@ footer{background:#0d0706;padding:60px 6% 28px;border-top:1px solid rgba(255,255
   <div class="scroll-hint"><span>Scroll</span><div class="scroll-wire"></div></div>
 </section>
 
+<!-- MENU -->
 <section id="menu" class="section">
   <div class="center reveal">
     <p class="section-label">Our Menu</p>
@@ -538,6 +532,7 @@ footer{background:#0d0706;padding:60px 6% 28px;border-top:1px solid rgba(255,255
   </div>
 </section>
 
+<!-- ABOUT -->
 <section id="about" class="section">
   <div class="center reveal">
     <p class="section-label">Our Story</p>
@@ -546,26 +541,10 @@ footer{background:#0d0706;padding:60px 6% 28px;border-top:1px solid rgba(255,255
     <p class="section-sub" style="margin-top:20px;">Serving Benin City with authentic Nigerian flavors and unmatched freshness since day one.</p>
   </div>
   <div class="feature-grid reveal">
-    <div class="feature-card">
-      <div class="feature-icon"><i class="fa-solid fa-fire-burner"></i></div>
-      <h3>Firewood Cooking</h3>
-      <p>Traditional method for authentic smoky Lagos party flavor</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon"><i class="fa-solid fa-leaf"></i></div>
-      <h3>Always Fresh</h3>
-      <p>Cooked daily, served fresh guaranteed. No shortcuts.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon"><i class="fa-solid fa-gem"></i></div>
-      <h3>Chic Space</h3>
-      <p>Modern dining with Nigerian warmth and hospitality</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon"><i class="fa-solid fa-tags"></i></div>
-      <h3>Affordable Luxury</h3>
-      <p>Premium quality at fair prices (₦2k-4k)</p>
-    </div>
+    <div class="feature-card"><div class="feature-icon"><i class="fa-solid fa-fire-burner"></i></div><h3>Firewood Cooking</h3><p>Traditional method for authentic smoky Lagos party flavor</p></div>
+    <div class="feature-card"><div class="feature-icon"><i class="fa-solid fa-leaf"></i></div><h3>Always Fresh</h3><p>Cooked daily, served fresh guaranteed. No shortcuts.</p></div>
+    <div class="feature-card"><div class="feature-icon"><i class="fa-solid fa-gem"></i></div><h3>Chic Space</h3><p>Modern dining with Nigerian warmth and hospitality</p></div>
+    <div class="feature-card"><div class="feature-icon"><i class="fa-solid fa-tags"></i></div><h3>Affordable Luxury</h3><p>Premium quality at fair prices (₦2k–4k)</p></div>
   </div>
   <div class="story-grid reveal">
     <div class="story-img-wrap">
@@ -574,64 +553,46 @@ footer{background:#0d0706;padding:60px 6% 28px;border-top:1px solid rgba(255,255
     </div>
     <div class="story-text">
       <p class="section-label">The Jollof Central Way</p>
-      <h2>Our Story</h2>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.75rem,3vw,2.3rem);margin-bottom:18px;">Our Story</h2>
       <div class="divider-left divider"></div>
-      <p style="margin-top:20px;">At Jollof Central, we don't just cook rice—we recreate the magic of Nigerian celebrations. Our firewood-cooked jollof carries that distinctive smoky flavor you can only find at the best Lagos parties.</p>
+      <p style="margin-top:20px;">At Jollof Central, we don't just cook rice — we recreate the magic of Nigerian celebrations. Our firewood-cooked jollof carries that distinctive smoky flavor you can only find at the best Lagos parties.</p>
       <p>Located in the heart of Benin City's GRA district at 86 Adesuwa Road, we've built our reputation on one simple promise: every plate served is fresh, flavorful, and made with love.</p>
       <p>Whether you're craving our signature Firewood Jollof, perfectly grilled chicken, or sweet fried plantain, we bring the party to your plate every single day.</p>
     </div>
   </div>
 </section>
 
-<section id="testimonials" class="section">
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="section" style="background:var(--bg2);">
   <div class="center reveal">
     <p class="section-label">Testimonials</p>
     <h2 class="section-title">What Customers <span class="gold">Say</span></h2>
     <div class="divider"></div>
   </div>
   <div class="testimonials-grid reveal">
-    <div class="testimonial-card">
-      <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-      <p class="testimonial-text">"Gosh, the jollof rice is the best I've had in Benin! Tastes exactly like party jollof in Lagos. I'll always recommend buying two plates, so you don't go home regretting like I did."</p>
-      <div class="testimonial-author">
-        <div class="author-avatar">AL</div>
-        <div><div class="author-name">Andy Lisa</div><div class="author-meta">Loyal Customer</div></div>
-      </div>
-    </div>
-    <div class="testimonial-card">
-      <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-      <p class="testimonial-text">"A very chic space, with very affordable and nicely prepared meals. Specifically liked their firewood standard jollof rice and their quality fried rice."</p>
-      <div class="testimonial-author">
-        <div class="author-avatar">B</div>
-        <div><div class="author-name">Babalola</div><div class="author-meta">Food Enthusiast</div></div>
-      </div>
-    </div>
-    <div class="testimonial-card">
-      <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-      <p class="testimonial-text">"The food here is always fresh. That's a win, I've been here like 5 times and the food is always fresh. Consistency is key and they have it!"</p>
-      <div class="testimonial-author">
-        <div class="author-avatar">OU</div>
-        <div><div class="author-name">Osazuwa Urhoghide</div><div class="author-meta">Regular Visitor</div></div>
-      </div>
-    </div>
+    <div class="testimonial-card"><div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p class="testimonial-text">"Gosh, the jollof rice is the best I've had in Benin! Tastes exactly like party jollof in Lagos. I'll always recommend buying two plates, so you don't go home regretting like I did."</p><div class="testimonial-author"><div class="author-avatar">AL</div><div><div class="author-name">Andy Lisa</div><div class="author-meta">Loyal Customer</div></div></div></div>
+    <div class="testimonial-card"><div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p class="testimonial-text">"A very chic space, with very affordable and nicely prepared meals. Specifically liked their firewood standard jollof rice and their quality fried rice."</p><div class="testimonial-author"><div class="author-avatar">B</div><div><div class="author-name">Babalola</div><div class="author-meta">Food Enthusiast</div></div></div></div>
+    <div class="testimonial-card"><div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p class="testimonial-text">"The food here is always fresh. That's a win, I've been here like 5 times and the food is always fresh. Consistency is key and they have it!"</p><div class="testimonial-author"><div class="author-avatar">OU</div><div><div class="author-name">Osazuwa Urhoghide</div><div class="author-meta">Regular Visitor</div></div></div></div>
   </div>
 </section>
 
-<section id="gallery" class="section">
+<!-- GALLERY -->
+<section id="gallery" class="section" style="background:#120b08;">
   <div class="center reveal">
     <p class="section-label">Gallery</p>
     <h2 class="section-title">Food <span class="gold">Gallery</span></h2>
     <div class="divider"></div>
     <p class="section-sub" style="margin-top:20px;">Take a peek at our delicious offerings and chic dining space</p>
   </div>
-  <div class="gallery-grid reveal" id="galleryGrid"></div>
+  <div class="gallery-grid" id="galleryGrid"></div>
 </section>
 
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <button class="lightbox-close" onclick="closeLightbox()"><i class="fa-solid fa-xmark"></i></button>
-  <img id="lightboxImg" src="" alt="Gallery"/>
+  <button class="lightbox-close" onclick="event.stopPropagation();closeLightbox()"><i class="fa-solid fa-xmark"></i></button>
+  <img id="lightboxImg" src="" alt="Gallery" onclick="event.stopPropagation()"/>
 </div>
 
+<!-- CONTACT -->
 <section id="contact" class="section">
   <div class="center reveal">
     <p class="section-label">Visit Us</p>
@@ -641,27 +602,13 @@ footer{background:#0d0706;padding:60px 6% 28px;border-top:1px solid rgba(255,255
   <div class="contact-grid">
     <div class="reveal">
       <p style="color:var(--muted);line-height:1.7;margin:20px 0 28px;font-size:.95rem;">Come experience the best jollof rice in Benin City. We're located in the heart of GRA, ready to serve you the authentic taste of Lagos celebrations.</p>
-      <div class="contact-item">
-        <div class="contact-icon-wrap"><i class="fa-solid fa-location-dot"></i></div>
-        <div class="contact-item-text"><h4>Address</h4><p>86 Adesuwa Rd, GRA<br>Benin City 300102, Edo, Nigeria</p><span style="font-size:.75rem;color:var(--muted);">Plus Code: 8J28+WM Benin City</span></div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-icon-wrap"><i class="fa-solid fa-phone"></i></div>
-        <div class="contact-item-text"><h4>Phone</h4><a href="tel:08054644895">0805 464 4895</a></div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-icon-wrap"><i class="fa-regular fa-clock"></i></div>
-        <div class="contact-item-text">
-          <h4>Opening Hours</h4>
-          <p>Monday - Sunday: 11:00 AM - 8:00 PM</p>
-          <div class="open-badge"><span class="dot-green"></span> Open Now</div>
-        </div>
-      </div>
+      <div class="contact-item"><div class="contact-icon-wrap"><i class="fa-solid fa-location-dot"></i></div><div class="contact-item-text"><h4>Address</h4><p>86 Adesuwa Rd, GRA<br>Benin City 300102, Edo, Nigeria</p></div></div>
+      <div class="contact-item"><div class="contact-icon-wrap"><i class="fa-solid fa-phone"></i></div><div class="contact-item-text"><h4>Phone</h4><a href="tel:08054644895">0805 464 4895</a></div></div>
+      <div class="contact-item"><div class="contact-icon-wrap"><i class="fa-brands fa-whatsapp"></i></div><div class="contact-item-text"><h4>WhatsApp</h4><a href="https://wa.me/2348054644895" target="_blank">Chat with us on WhatsApp</a></div></div>
+      <div class="contact-item"><div class="contact-icon-wrap"><i class="fa-regular fa-clock"></i></div><div class="contact-item-text"><h4>Opening Hours</h4><p>Monday – Sunday: 11:00 AM – 8:00 PM</p><div class="open-badge"><span class="dot-green"></span> Open Now</div></div></div>
     </div>
     <div class="reveal">
-      <div class="map-wrap">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.0!2d5.6234!3d6.3333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTknNTkuOSJOIDXCsDM3JzI0LjMiRQ!5e0!3m2!1sen!2sng!4v1234567890" allowfullscreen loading="lazy" title="Jollof Central Location"></iframe>
-      </div>
+      <div class="map-wrap"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.052!2d5.6200!3d6.3402!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1040da71563eb1c5%3A0x5d78a1c02eb8f24c!2sAdesuwa%20Rd%2C%20GRA%2C%20Benin%20City%2C%20Edo%2C%20Nigeria!5e0!3m2!1sen!2sng!4v1700000000000" allowfullscreen loading="lazy" title="Jollof Central Location"></iframe></div>
       <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;">
         <a href="https://maps.google.com/?q=86+Adesuwa+Rd+GRA+Benin+City" target="_blank" class="btn btn-gold"><i class="fa-solid fa-diamond-turn-right"></i> Directions</a>
         <a href="tel:08054644895" class="btn btn-dark"><i class="fa-solid fa-phone"></i> Call</a>
@@ -671,6 +618,7 @@ footer{background:#0d0706;padding:60px 6% 28px;border-top:1px solid rgba(255,255
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
@@ -683,8 +631,8 @@ footer{background:#0d0706;padding:60px 6% 28px;border-top:1px solid rgba(255,255
       <div class="social-links">
         <a href="#" class="social-link" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
         <a href="#" class="social-link" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-        <a href="#" class="social-link" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
-        <a href="https://wa.me/2348054644895" class="social-link" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="#" class="social-link" title="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://wa.me/2348054644895" target="_blank" class="social-link" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
       </div>
     </div>
     <div class="footer-col">
@@ -699,19 +647,13 @@ footer{background:#0d0706;padding:60px 6% 28px;border-top:1px solid rgba(255,255
     </div>
     <div class="footer-col">
       <h4>Opening Hours</h4>
-      <div style="display:flex;justify-content:space-between;margin-bottom:9px;font-size:.8rem;"><span style="color:var(--muted);">Daily</span><span style="color:var(--gold);font-weight:700;">11:00 AM - 8:00 PM</span></div>
+      <div style="display:flex;justify-content:space-between;margin-bottom:9px;font-size:.8rem;"><span style="color:var(--muted);">Daily</span><span style="color:var(--gold);font-weight:700;">11:00 AM – 8:00 PM</span></div>
       <div class="open-badge" style="margin-top:16px;"><span class="dot-green"></span> Open Now</div>
     </div>
     <div class="footer-col">
       <h4>Find Us</h4>
-      <div class="contact-item" style="margin-bottom:16px;">
-        <div class="contact-icon-wrap" style="width:36px;height:36px;font-size:13px;"><i class="fa-solid fa-location-dot"></i></div>
-        <div class="contact-item-text"><p style="font-size:.85rem;">86 Adesuwa Rd, GRA, Benin City</p></div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-icon-wrap" style="width:36px;height:36px;font-size:13px;"><i class="fa-solid fa-phone"></i></div>
-        <div class="contact-item-text"><a href="tel:08054644895" style="color:var(--gold);text-decoration:none;font-size:.88rem;">0805 464 4895</a></div>
-      </div>
+      <div class="contact-item" style="margin-bottom:16px;"><div class="contact-icon-wrap" style="width:36px;height:36px;font-size:13px;"><i class="fa-solid fa-location-dot"></i></div><div class="contact-item-text"><p style="font-size:.85rem;">86 Adesuwa Rd, GRA, Benin City</p></div></div>
+      <div class="contact-item"><div class="contact-icon-wrap" style="width:36px;height:36px;font-size:13px;"><i class="fa-solid fa-phone"></i></div><div class="contact-item-text"><a href="tel:08054644895" style="color:var(--gold);text-decoration:none;font-size:.88rem;">0805 464 4895</a></div></div>
     </div>
   </div>
   <div class="footer-bottom">
@@ -719,10 +661,11 @@ footer{background:#0d0706;padding:60px 6% 28px;border-top:1px solid rgba(255,255
   </div>
 </footer>
 
-<div class="toast" id="toast"><i class="fa-solid fa-circle-check" id="toastIcon"></i><span id="toastMsg"></span></div>
+<!-- TOAST -->
+<div class="toast" id="toast"><i class="fa-solid fa-circle-check"></i><span id="toastMsg"></span></div>
 
+<!-- CART -->
 <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
-
 <div class="cart-panel" id="cartPanel">
   <div class="cart-header">
     <h3><i class="fa-solid fa-cart-shopping"></i> Your Order</h3>
@@ -732,300 +675,275 @@ footer{background:#0d0706;padding:60px 6% 28px;border-top:1px solid rgba(255,255
     <div class="cart-empty"><i class="fa-solid fa-utensils"></i><p>Your cart is empty.<br>Browse our menu and add items!</p></div>
   </div>
   <div class="cart-footer">
-    <div class="cart-total">
-      <span>Total</span>
-      <span class="total-price" id="cartTotal">₦0</span>
-    </div>
-    <button id="cartCheckoutBtn" class="btn btn-gold" style="width:100%;justify-content:center;padding:15px;" onclick="checkout()">Proceed to Checkout <i class="fa-solid fa-arrow-right"></i></button>
+    <div class="cart-total"><span>Total</span><span class="total-price" id="cartTotal">₦0</span></div>
+    <button class="btn btn-gold" style="width:100%;justify-content:center;padding:15px;" onclick="checkout()">
+      Proceed to Checkout <i class="fa-solid fa-arrow-right"></i>
+    </button>
   </div>
 </div>
 
+<!-- ═══════════════ CHECKOUT MODAL ═══════════════ -->
 <div class="modal-bg" id="payModal">
   <div class="modal" style="max-width:520px;">
     <button class="modal-close" onclick="closeModal('payModal')"><i class="fa-solid fa-xmark"></i></button>
-    
+
+    <!-- Step 1 -->
     <div id="checkoutStep1">
       <div class="pay-modal-header">
         <div class="pay-modal-icon"><i class="fa-solid fa-cart-shopping"></i></div>
-        <div>
-          <div class="pay-modal-title">Your Order</div>
-          <div class="pay-modal-sub">Choose how you'd like to receive it</div>
-        </div>
+        <div><div class="pay-modal-title">Your Order</div><div class="pay-modal-sub">Choose how you'd like to receive it</div></div>
       </div>
-
-      <div class="order-type" style="margin-bottom:18px;">
+      <div class="order-type">
         <div class="order-type-btn active" id="deliveryBtn" onclick="selectOrderType('delivery')">
           <div class="ot-icon"><i class="fa-solid fa-motorcycle"></i></div>
-          <h4>Delivery</h4><p>We'll bring it to you</p>
+          <h4>Delivery</h4><p>We bring it to you</p>
           <div class="price">₦500 delivery fee</div>
         </div>
         <div class="order-type-btn" id="pickupBtn" onclick="selectOrderType('pickup')">
           <div class="ot-icon"><i class="fa-solid fa-store"></i></div>
-          <h4>Pickup</h4><p>Collect from restaurant</p>
+          <h4>Pickup</h4><p>Collect at restaurant</p>
           <div class="price" style="color:#22c55e;">Free</div>
         </div>
       </div>
-
       <div id="deliveryAddrWrap">
         <label class="form-label">Delivery Address <span style="color:var(--red)">*</span></label>
         <input class="form-input" id="deliveryAddr" type="text" placeholder="Enter your full address with landmarks..."/>
-        <div class="est-time" style="margin-top:10px;"><i class="fa-regular fa-clock"></i> Estimated delivery: <span>30-45 mins</span></div>
+        <div class="est-time"><i class="fa-regular fa-clock"></i> Estimated delivery: <span>30–45 mins</span></div>
       </div>
       <div id="pickupAddrWrap" style="display:none;">
         <div class="pickup-info">
           <div><i class="fa-solid fa-location-dot"></i> 86 Adesuwa Rd, GRA, Benin City</div>
           <div><i class="fa-solid fa-phone"></i> 0805 464 4895</div>
-          <div class="pickup-free"><i class="fa-solid fa-circle-check"></i> Pickup is free - ready in 20-30 mins</div>
+          <div class="pickup-free"><i class="fa-solid fa-circle-check"></i> Pickup is free — ready in 20–30 mins</div>
         </div>
       </div>
-
       <div class="pay-order-summary" id="miniCartSummary" style="margin-top:16px;"></div>
-
       <button class="btn btn-gold" style="width:100%;justify-content:center;font-size:1rem;padding:16px;margin-top:14px;" onclick="goToPayStep()">
-        Proceed to Payment <i class="fa-solid fa-arrow-right"></i>
+        Continue to Payment <i class="fa-solid fa-arrow-right"></i>
       </button>
     </div>
 
+    <!-- Step 2 -->
     <div id="checkoutStep2" style="display:none;">
       <div class="pay-modal-header">
-        <div class="pay-modal-icon"><i class="fa-solid fa-lock"></i></div>
-        <div>
-          <div class="pay-modal-title">Secure Checkout</div>
-          <div class="pay-modal-sub">Complete your payment below</div>
-        </div>
+        <div class="pay-modal-icon"><i class="fa-solid fa-user"></i></div>
+        <div><div class="pay-modal-title">Complete Order</div><div class="pay-modal-sub">Your details & payment method</div></div>
       </div>
-
       <button onclick="goBackToStep1()" style="background:none;border:none;color:var(--muted);font-size:.78rem;cursor:pointer;display:flex;align-items:center;gap:6px;margin-bottom:14px;font-family:'DM Sans',sans-serif;padding:0;">
         <i class="fa-solid fa-arrow-left"></i> Back to order details
       </button>
-
       <div class="pay-order-summary" id="paySummary"></div>
 
       <p style="font-size:.76rem;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;">Payment Method</p>
       <div class="pay-method-tabs">
-        <div class="pay-method-tab active" id="tabPayNow" onclick="selectPayMethod('online')">
-          <i class="fa-solid fa-credit-card"></i>
-          <span>Pay Online</span>
-          <small>Card / Bank / Transfer</small>
+        <div class="pay-method-tab active" id="tabPOD" onclick="selectPayMethod('pod')">
+          <i class="fa-solid fa-money-bill-wave"></i><span>Pay on Delivery</span><small>Cash at door/pickup</small>
         </div>
-        <div class="pay-method-tab" id="tabPOD" onclick="selectPayMethod('pod')">
-          <i class="fa-solid fa-money-bill-wave"></i>
-          <span>Pay on Delivery</span>
-          <small>Cash at door</small>
+        <div class="pay-method-tab" id="tabTransfer" onclick="selectPayMethod('transfer')">
+          <i class="fa-solid fa-building-columns"></i><span>Bank Transfer</span><small>Transfer before order</small>
+        </div>
+      </div>
+
+      <div id="podInfo" class="info-box info-box-gold">
+        <i class="fa-solid fa-circle-info"></i>
+        <span id="podInfoText">Have the exact cash amount ready when your order arrives.</span>
+      </div>
+      <div id="transferInfo" style="display:none;">
+        <div class="info-box info-box-blue"><i class="fa-solid fa-circle-info"></i><span>Transfer the total to the account below then confirm your order. We'll verify and start preparation.</span></div>
+        <div class="bank-details">
+          <div class="bank-row"><span class="lbl">Bank</span><span class="val">First Bank of Nigeria</span></div>
+          <div class="bank-row"><span class="lbl">Account Name</span><span class="val">Jollof Central</span></div>
+          <div class="bank-row"><span class="lbl">Account No.</span><span class="val"><span id="bankAccNum">3012345678</span><button class="copy-btn" onclick="copyAccNum()">Copy</button></span></div>
         </div>
       </div>
 
       <p style="font-size:.76rem;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">Your Details</p>
       <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:18px;">
-        <input class="form-input" id="payName" type="text" placeholder="Full name *"/>
-        <input class="form-input" id="payEmail" type="email" placeholder="Email address * (for receipt)"/>
-        <input class="form-input" id="payPhone" type="tel" placeholder="Phone number *"/>
+        <input class="form-input" id="payName"  type="text"  placeholder="Full name *"/>
+        <input class="form-input" id="payPhone" type="tel"   placeholder="Phone number *"/>
+        <input class="form-input" id="payEmail" type="email" placeholder="Email (optional — for receipt)"/>
       </div>
 
-      <div class="pod-note" id="podNote" style="display:none;">
-        <i class="fa-solid fa-circle-info"></i>
-        <span id="podNoteText">Pay with cash when your order arrives. Please have the exact amount ready.</span>
-      </div>
-
-      <div class="paystack-badge" id="paystackBadge">
-        <i class="fa-solid fa-shield-halved" style="color:var(--green);"></i>
-        <span>Secured by <strong>Paystack</strong> • 256-bit SSL encryption</span>
-      </div>
-
-      <button class="btn btn-gold" id="payNowBtn" style="width:100%;justify-content:center;font-size:1rem;padding:16px;" onclick="initiatePayment()">
-        <i class="fa-solid fa-lock"></i> <span id="payBtnText">Pay Now with Paystack</span>
+      <button class="btn btn-wa" style="width:100%;justify-content:center;font-size:1rem;padding:16px;" onclick="confirmOrder()">
+        <i class="fa-brands fa-whatsapp"></i> Confirm Order via WhatsApp
       </button>
+      <p style="font-size:.72rem;color:var(--muted);text-align:center;margin-top:8px;">
+        <i class="fa-solid fa-lock" style="color:var(--green);"></i> Your order opens in WhatsApp for fast confirmation
+      </p>
     </div>
   </div>
 </div>
 
+<!-- ═══════════════ ORDER SUCCESS ═══════════════ -->
 <div class="modal-bg" id="orderModal">
   <div class="modal">
     <button class="modal-close" onclick="closeModal('orderModal')"><i class="fa-solid fa-xmark"></i></button>
     <div style="font-size:2.9rem;text-align:center;margin-bottom:14px;"><i class="fa-solid fa-circle-check" style="color:var(--green);"></i></div>
-    <h3>Order <span class="gold">Confirmed!</span></h3>
-    <p>Your order has been received and is being prepared.</p>
-    <div style="background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.3);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px;margin-bottom:18px;margin-top:18px;">
-      <i class="fa-solid fa-circle-check" style="font-size:1.6rem;color:var(--green);"></i>
-      <p style="font-size:.84rem;line-height:1.55;color:var(--light);"><strong style="color:var(--green);">Payment successful!</strong> We'll begin preparing your order immediately.</p>
+    <h3 class="modal-title" style="text-align:center;">Order <span class="gold">Sent!</span></h3>
+    <p class="modal-sub" style="text-align:center;">Your order has been sent to us on WhatsApp. We'll confirm shortly.</p>
+    <div style="background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.25);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px;margin-bottom:18px;">
+      <i class="fa-brands fa-whatsapp" style="font-size:1.6rem;color:#25D366;flex-shrink:0;"></i>
+      <p style="font-size:.84rem;line-height:1.55;color:var(--light);">Check your WhatsApp — we'll confirm your order and estimated time shortly.</p>
     </div>
     <div id="orderDetails" style="background:var(--bg2);border-radius:10px;padding:15px;font-size:.82rem;color:var(--muted);line-height:2.3;margin-bottom:20px;border:1px solid rgba(255,255,255,.06);"></div>
-    <button class="btn btn-outline" style="width:100%;justify-content:center;font-size:.88rem;" onclick="closeModal('orderModal')"><i class="fa-solid fa-check"></i> Done</button>
+    <button class="btn btn-outline" style="width:100%;justify-content:center;" onclick="closeModal('orderModal')"><i class="fa-solid fa-check"></i> Done</button>
   </div>
 </div>
 
+<!-- ═══════════════ PROFILE MODAL ═══════════════ -->
+<div class="modal-bg" id="profileModal">
+  <div class="modal" style="max-width:480px;">
+    <button class="modal-close" onclick="closeModal('profileModal')"><i class="fa-solid fa-xmark"></i></button>
+    <div class="tab-bar">
+      <button class="tab-btn active" id="profileTab" onclick="switchProfileTab('profile')"><i class="fa-solid fa-user" style="margin-right:5px;"></i>Profile</button>
+      <button class="tab-btn" id="passwordTab" onclick="switchProfileTab('password')"><i class="fa-solid fa-lock" style="margin-right:5px;"></i>Password</button>
+    </div>
+
+    <!-- Profile view -->
+    <div id="profileView">
+      <div class="profile-avatar-wrap">
+        <div class="profile-avatar" id="profileAvatar">?</div>
+        <div class="profile-name" id="profileName">—</div>
+        <div class="profile-email" id="profileEmailDisplay">—</div>
+      </div>
+      <label class="form-label">Full Name</label>
+      <input class="form-input" id="editName" type="text" placeholder="Your full name"/>
+      <label class="form-label">Phone Number</label>
+      <input class="form-input" id="editPhone" type="tel" placeholder="080XXXXXXXX"/>
+      <label class="form-label">Email Address</label>
+      <input class="form-input" id="editEmail" type="email" placeholder="you@example.com"/>
+      <label class="form-label">Default Delivery Address</label>
+      <input class="form-input" id="editAddr" type="text" placeholder="Street, area, landmark — Benin City"/>
+      <div style="display:flex;gap:10px;margin-top:20px;">
+        <button class="btn btn-gold" style="flex:1;justify-content:center;" onclick="saveProfile()"><i class="fa-solid fa-floppy-disk"></i> Save Changes</button>
+        <button class="btn btn-dark" onclick="closeModal('profileModal')">Cancel</button>
+      </div>
+    </div>
+
+    <!-- Password view -->
+    <div id="passwordView" style="display:none;">
+      <h3 class="modal-title">Change Password</h3>
+      <p class="modal-sub">Update your account password below.</p>
+      <label class="form-label">Current Password</label>
+      <div style="position:relative;">
+        <input class="form-input" id="curPass" type="password" placeholder="Current password" style="padding-right:42px;"/>
+        <button class="auth-eye" style="top:50%;transform:translateY(-50%);" onclick="authToggleEye('curPass',this)"><i class="fa-regular fa-eye"></i></button>
+      </div>
+      <label class="form-label">New Password</label>
+      <div style="position:relative;">
+        <input class="form-input" id="newPass" type="password" placeholder="New password (min 6 chars)" style="padding-right:42px;"/>
+        <button class="auth-eye" style="top:50%;transform:translateY(-50%);" onclick="authToggleEye('newPass',this)"><i class="fa-regular fa-eye"></i></button>
+      </div>
+      <label class="form-label">Confirm New Password</label>
+      <div style="position:relative;">
+        <input class="form-input" id="confPass" type="password" placeholder="Re-enter new password" style="padding-right:42px;"/>
+        <button class="auth-eye" style="top:50%;transform:translateY(-50%);" onclick="authToggleEye('confPass',this)"><i class="fa-regular fa-eye"></i></button>
+      </div>
+      <button class="btn btn-gold" style="width:100%;justify-content:center;margin-top:20px;" onclick="changePassword()">
+        <i class="fa-solid fa-lock"></i> Update Password
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ ORDER HISTORY MODAL ═══════════════ -->
+<div class="modal-bg" id="historyModal">
+  <div class="modal" style="max-width:560px;">
+    <button class="modal-close" onclick="closeModal('historyModal')"><i class="fa-solid fa-xmark"></i></button>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:10px;">
+      <div>
+        <h3 class="modal-title">Order History</h3>
+        <p style="font-size:.78rem;color:var(--muted);margin-top:2px;">All your past orders</p>
+      </div>
+      <button class="btn btn-dark btn-sm" onclick="clearOrderHistory()"><i class="fa-solid fa-trash"></i> Clear History</button>
+    </div>
+    <div id="orderHistoryList"></div>
+  </div>
+</div>
+
+<!-- ═══════════════ AUTH MODAL ═══════════════ -->
 <div class="auth-modal-bg" id="authModalBg" onclick="if(event.target===this)closeAuthModal()">
-  <div class="auth-modal" id="authModal">
+  <div class="auth-modal">
     <button class="auth-close" onclick="closeAuthModal()"><i class="fa-solid fa-xmark"></i></button>
-    
     <div class="auth-logo">
       <div class="auth-logo-icon"><i class="fa-solid fa-fire"></i></div>
       <div class="auth-logo-text">Jollof <span>Central</span></div>
     </div>
-
     <div class="auth-tabs">
-      <button class="auth-tab active" id="aTabLogin" onclick="switchAuthTab('login')">
-        <i class="fa-solid fa-right-to-bracket" style="margin-right:5px;font-size:.75rem;"></i>Sign In
-      </button>
-      <button class="auth-tab" id="aTabSignup" onclick="switchAuthTab('signup')">
-        <i class="fa-solid fa-user-plus" style="margin-right:5px;font-size:.75rem;"></i>Sign Up
-      </button>
+      <button class="auth-tab active" id="aTabLogin" onclick="switchAuthTab('login')"><i class="fa-solid fa-right-to-bracket" style="margin-right:5px;font-size:.75rem;"></i>Sign In</button>
+      <button class="auth-tab" id="aTabSignup" onclick="switchAuthTab('signup')"><i class="fa-solid fa-user-plus" style="margin-right:5px;font-size:.75rem;"></i>Sign Up</button>
     </div>
 
+    <!-- Login -->
     <div id="aLoginView">
-      <div class="auth-heading">
-        <h2>Welcome <span class="gold">Back</span></h2>
-        <p>Sign in to order food, track deliveries and manage your account.</p>
-      </div>
-
-      <div class="auth-field">
-        <label>Email Address <span>*</span></label>
-        <div class="auth-input-wrap">
-          <i class="fa-regular fa-envelope auth-lead"></i>
-          <input type="email" id="aLoginEmail" placeholder="you@example.com" autocomplete="email"/>
-        </div>
-        <div class="auth-err" id="aLoginEmailErr"><i class="fa-solid fa-circle-exclamation"></i><span></span></div>
-      </div>
-
-      <div class="auth-field">
-        <label>Password <span>*</span></label>
-        <div class="auth-input-wrap">
-          <i class="fa-solid fa-lock auth-lead"></i>
-          <input type="password" id="aLoginPass" placeholder="Enter your password" autocomplete="current-password"/>
-          <button class="auth-eye" type="button" onclick="authToggleEye('aLoginPass',this)"><i class="fa-regular fa-eye"></i></button>
-        </div>
-        <div class="auth-err" id="aLoginPassErr"><i class="fa-solid fa-circle-exclamation"></i><span></span></div>
-      </div>
-
+      <div class="auth-heading"><h2>Welcome <span class="gold">Back</span></h2><p>Sign in to order food and manage your account.</p></div>
+      <div class="auth-field"><label>Email <span>*</span></label><div class="auth-input-wrap"><i class="fa-regular fa-envelope auth-lead"></i><input type="email" id="aLoginEmail" placeholder="you@example.com" autocomplete="email"/></div></div>
+      <div class="auth-field"><label>Password <span>*</span></label><div class="auth-input-wrap"><i class="fa-solid fa-lock auth-lead"></i><input type="password" id="aLoginPass" placeholder="Enter your password" autocomplete="current-password"/><button class="auth-eye" onclick="authToggleEye('aLoginPass',this)"><i class="fa-regular fa-eye"></i></button></div></div>
       <div class="auth-extras">
-        <label class="auth-check-wrap">
-          <input type="checkbox" id="aRemember"/>
-          <span class="auth-check-lbl">Remember me</span>
-        </label>
-        <button class="auth-forgot" onclick="showToast('fa-circle-info','Contact support to reset password')">Forgot Password?</button>
+        <label class="auth-check-wrap"><input type="checkbox" id="aRemember"/><span class="auth-check-lbl">Remember me</span></label>
+        <button class="auth-forgot" onclick="showForgotPassword()">Forgot Password?</button>
       </div>
-
       <button class="auth-submit" id="aLoginBtn" onclick="authSubmitLogin()">
         <span class="a-btn-text">Sign In to My Account</span>
         <i class="fa-solid fa-arrow-right a-btn-icon"></i>
         <div class="a-spinner"></div>
       </button>
-
-      <div class="auth-or">or continue with</div>
-      <div class="auth-socials">
-        <button class="auth-social-btn" onclick="showToast('fa-google','Google login coming soon')"><i class="fab fa-google"></i> Google</button>
-        <button class="auth-social-btn" onclick="showToast('fa-facebook','Facebook login coming soon')"><i class="fab fa-facebook-f"></i> Facebook</button>
-      </div>
       <p class="auth-switch">No account? <button class="auth-switch-btn" onclick="switchAuthTab('signup')">Sign up free</button></p>
     </div>
 
+    <!-- Sign Up -->
     <div id="aSignupView" style="display:none;">
-      <div class="auth-heading">
-        <h2>Create <span class="gold">Account</span></h2>
-        <p>Join us and get your favourite jollof delivered fast across Benin City.</p>
-      </div>
-
-      <div class="auth-field">
-        <label>Full Name <span>*</span></label>
-        <div class="auth-input-wrap">
-          <i class="fa-solid fa-user auth-lead"></i>
-          <input type="text" id="aSuName" placeholder="Full name" autocomplete="name"/>
-        </div>
-        <div class="auth-err" id="aSuNameErr"><i class="fa-solid fa-circle-exclamation"></i><span></span></div>
-      </div>
-
-      <div class="auth-field">
-        <label>Phone Number <span>*</span></label>
-        <div class="auth-input-wrap">
-          <i class="fa-solid fa-phone auth-lead"></i>
-          <input type="tel" id="aSuPhone" placeholder="080XXXXXXXX" autocomplete="tel"/>
-        </div>
-        <div class="auth-err" id="aSuPhoneErr"><i class="fa-solid fa-circle-exclamation"></i><span></span></div>
-      </div>
-
-      <div class="auth-field">
-        <label>Email Address <span>*</span></label>
-        <div class="auth-input-wrap">
-          <i class="fa-regular fa-envelope auth-lead"></i>
-          <input type="email" id="aSuEmail" placeholder="you@example.com" autocomplete="email"/>
-        </div>
-        <div class="auth-err" id="aSuEmailErr"><i class="fa-solid fa-circle-exclamation"></i><span></span></div>
-      </div>
-
-      <div class="auth-field">
-        <label>Delivery Address <span>*</span></label>
-        <div class="auth-input-wrap">
-          <i class="fa-solid fa-location-dot auth-lead"></i>
-          <input type="text" id="aSuAddr" placeholder="Street, area, landmark - Benin City" autocomplete="street-address"/>
-        </div>
-        <div class="auth-err" id="aSuAddrErr"><i class="fa-solid fa-circle-exclamation"></i><span></span></div>
-      </div>
-
-      <div class="auth-field">
-        <label>Password <span>*</span></label>
-        <div class="auth-input-wrap">
-          <i class="fa-solid fa-lock auth-lead"></i>
-          <input type="password" id="aSuPass" placeholder="Create a strong password" autocomplete="new-password"/>
-          <button class="auth-eye" type="button" onclick="authToggleEye('aSuPass',this)"><i class="fa-regular fa-eye"></i></button>
-        </div>
-        <div class="auth-err" id="aSuPassErr"><i class="fa-solid fa-circle-exclamation"></i><span></span></div>
-      </div>
-
-      <div class="auth-field">
-        <label>Confirm Password <span>*</span></label>
-        <div class="auth-input-wrap">
-          <i class="fa-solid fa-lock auth-lead"></i>
-          <input type="password" id="aSuConfirm" placeholder="Re-enter password" autocomplete="new-password"/>
-          <button class="auth-eye" type="button" onclick="authToggleEye('aSuConfirm',this)"><i class="fa-regular fa-eye"></i></button>
-        </div>
-        <div class="auth-err" id="aSuConfirmErr"><i class="fa-solid fa-circle-exclamation"></i><span></span></div>
-      </div>
-
-      <label class="auth-check-wrap" style="margin-bottom:16px;">
-        <input type="checkbox" id="aAgreeTerms"/>
-        <span class="auth-check-lbl">I agree to the Terms & Privacy Policy</span>
-      </label>
-
+      <div class="auth-heading"><h2>Create <span class="gold">Account</span></h2><p>Join us and get your favourite jollof delivered fast across Benin City.</p></div>
+      <div class="auth-field"><label>Full Name <span>*</span></label><div class="auth-input-wrap"><i class="fa-solid fa-user auth-lead"></i><input type="text" id="aSuName" placeholder="Full name" autocomplete="name"/></div></div>
+      <div class="auth-field"><label>Phone <span>*</span></label><div class="auth-input-wrap"><i class="fa-solid fa-phone auth-lead"></i><input type="tel" id="aSuPhone" placeholder="080XXXXXXXX" autocomplete="tel"/></div></div>
+      <div class="auth-field"><label>Email <span>*</span></label><div class="auth-input-wrap"><i class="fa-regular fa-envelope auth-lead"></i><input type="email" id="aSuEmail" placeholder="you@example.com" autocomplete="email"/></div></div>
+      <div class="auth-field"><label>Delivery Address <span>*</span></label><div class="auth-input-wrap"><i class="fa-solid fa-location-dot auth-lead"></i><input type="text" id="aSuAddr" placeholder="Street, area, landmark — Benin City" autocomplete="street-address"/></div></div>
+      <div class="auth-field"><label>Password <span>*</span></label><div class="auth-input-wrap"><i class="fa-solid fa-lock auth-lead"></i><input type="password" id="aSuPass" placeholder="Create a strong password (min 6 chars)" autocomplete="new-password"/><button class="auth-eye" onclick="authToggleEye('aSuPass',this)"><i class="fa-regular fa-eye"></i></button></div></div>
+      <div class="auth-field"><label>Confirm Password <span>*</span></label><div class="auth-input-wrap"><i class="fa-solid fa-lock auth-lead"></i><input type="password" id="aSuConfirm" placeholder="Re-enter password" autocomplete="new-password"/><button class="auth-eye" onclick="authToggleEye('aSuConfirm',this)"><i class="fa-regular fa-eye"></i></button></div></div>
+      <label class="auth-check-wrap" style="margin-bottom:16px;"><input type="checkbox" id="aAgreeTerms"/><span class="auth-check-lbl">I agree to the Terms & Privacy Policy</span></label>
       <button class="auth-submit" id="aSignupBtn" onclick="authSubmitSignup()">
         <span class="a-btn-text">Create My Account</span>
         <i class="fa-solid fa-user-plus a-btn-icon"></i>
         <div class="a-spinner"></div>
       </button>
-
-      <p class="auth-terms">Your details are safe. We never share your data.</p>
+      <p class="auth-terms">Your details are safe and never shared with third parties.</p>
       <p class="auth-switch" style="margin-top:10px;">Already have an account? <button class="auth-switch-btn" onclick="switchAuthTab('login')">Sign in here</button></p>
     </div>
   </div>
 </div>
 
+<!-- COOKIE -->
 <div class="cookie-banner" id="cookieBanner">
-  <div class="cookie-banner-text">
-    <p><strong>We use cookies</strong> - We use essential and functional cookies to improve your experience.</p>
-  </div>
-  <div class="cookie-banner-btns">
-    <button class="cookie-btn-accept" onclick="cookieConsent('accept')">Accept All</button>
-    <button class="cookie-btn-reject" onclick="cookieConsent('reject')">Reject Non-Essential</button>
+  <div class="cookie-banner-text"><p><strong>We use cookies</strong> to improve your browsing experience on our site.</p></div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;">
+    <button class="cookie-btn-accept" onclick="cookieConsent('accept')">Accept</button>
+    <button class="cookie-btn-reject" onclick="cookieConsent('reject')">Decline</button>
   </div>
 </div>
 
+<!-- ═══════════════════ JAVASCRIPT ═══════════════════ -->
 <script>
-const PAYSTACK_PUBLIC_KEY = 'pk_test_dc78671590de5cc34d2bf71cfcb8c9939d6e70ff';
-const RESTAURANT_PHONE = '2348054644895';
-let DELIVERY_FEE = 500;
+/* ─── CONFIG ─── */
+const RESTAURANT_WHATSAPP = '2348054644895';
+const DELIVERY_FEE        = 500;
+const BANK_NAME    = 'First Bank of Nigeria';
+const BANK_ACCT    = '3012345678';
+const BANK_ACCT_NAME = 'Jollof Central';
 
-const menuItems=[
-  {id:1,name:'Firewood Jollof Rice',desc:'Our signature party-style jollof cooked over firewood with authentic smoky Lagos party flavor. Served with choice of protein.',price:2500,cat:'rice',badge:'sig',badgeText:'Bestseller',img:'https://kimi-web-img.moonshot.cn/img/www.preciouscore.com/29a0d1265bf83ab07e20e38ccac7f120f28ba77a.jpg'},
+/* ─── MENU DATA ─── */
+const menuItems = [
+  {id:1,name:'Firewood Jollof Rice',desc:'Our signature party-style jollof cooked over firewood with authentic smoky Lagos party flavor.',price:2500,cat:'rice',badge:'sig',badgeText:'Bestseller',img:'https://kimi-web-img.moonshot.cn/img/www.preciouscore.com/29a0d1265bf83ab07e20e38ccac7f120f28ba77a.jpg'},
   {id:2,name:'Quality Fried Rice',desc:'Perfectly seasoned fried rice with mixed vegetables, scrambled eggs, and your choice of grilled chicken or beef.',price:2800,cat:'rice',badge:'house',badgeText:'Popular',img:'https://kimi-web-img.moonshot.cn/img/nkechiajaeroh.com/6632fd92a88d260eb4035fba8a47f813bb3ec8bf.jpg'},
   {id:3,name:'Jollof & Chicken Combo',desc:'Generous portion of our famous jollof rice served with perfectly grilled chicken thighs and plantain.',price:3500,cat:'rice',badge:'fav',badgeText:'Combo',img:'https://kimi-web-img.moonshot.cn/img/substack-post-media.s3.amazonaws.com/9b9c4ae37dcc98d5677d1f1da36bcf4a838e5f7f.png'},
   {id:4,name:'Coconut Rice Special',desc:'Fragrant rice cooked in coconut milk with spices, served with shredded chicken and vegetables.',price:2800,cat:'rice',badge:'chef',badgeText:'Special',img:'https://kimi-web-img.moonshot.cn/img/www.seriouseats.com/9d27f7d39d058192fc96e7e5540011d688469afa.JPG'},
-  {id:5,name:'Rice & Beans (Waakye Style)',desc:'Perfect blend of rice and beans cooked together, served with stew, spaghetti, and fried plantain.',price:2200,cat:'rice',badge:'house',badgeText:'Classic',img:'https://kimi-web-img.moonshot.cn/img/eleanorsdish.com/df50f5ebe4c5dd488c02a83d3351965250a5dccf.jpg'},
-  {id:6,name:'Seafood Jollof Deluxe',desc:'Premium jollof rice loaded with prawns, calamari, and fish fillets. For seafood lovers!',price:4500,cat:'rice',badge:'sig',badgeText:'Premium',img:'https://kimi-web-img.moonshot.cn/img/weeatatlast.com/c1c7934dd7b61244c921515a7a1dd47db102fec6.jpg'},
+  {id:5,name:'Rice & Beans (Waakye Style)',desc:'Perfect blend of rice and beans cooked together, served with stew and fried plantain.',price:2200,cat:'rice',badge:'house',badgeText:'Classic',img:'https://kimi-web-img.moonshot.cn/img/eleanorsdish.com/df50f5ebe4c5dd488c02a83d3351965250a5dccf.jpg'},
+  {id:6,name:'Seafood Jollof Deluxe',desc:'Premium jollof rice loaded with prawns, calamari, and fish fillets.',price:4500,cat:'rice',badge:'sig',badgeText:'Premium',img:'https://kimi-web-img.moonshot.cn/img/weeatatlast.com/c1c7934dd7b61244c921515a7a1dd47db102fec6.jpg'},
   {id:7,name:'Grilled Chicken (2 pcs)',desc:'Marinated chicken thighs grilled to perfection with our secret spice blend.',price:1500,cat:'sides',badge:'fav',badgeText:'Protein',img:'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=600&q=80'},
-  {id:8,name:'Sweet Fried Plantain (Dodo)',desc:'Ripe plantains fried until caramelized and sweet. Perfect side for any rice dish.',price:800,cat:'sides',badge:'fav',badgeText:'Side',img:'https://images.unsplash.com/photo-1529193591184-b1d580690dd0?w=600&q=80'},
-  {id:9,name:'Fresh Coleslaw',desc:'Crisp cabbage and carrots in creamy dressing. The classic jollof companion.',price:600,cat:'sides',badge:'house',badgeText:'Fresh',img:'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&q=80'},
+  {id:8,name:'Sweet Fried Plantain (Dodo)',desc:'Ripe plantains fried until caramelized and sweet.',price:800,cat:'sides',badge:'fav',badgeText:'Side',img:'https://images.unsplash.com/photo-1529193591184-b1d580690dd0?w=600&q=80'},
+  {id:9,name:'Fresh Coleslaw',desc:'Crisp cabbage and carrots in creamy dressing.',price:600,cat:'sides',badge:'house',badgeText:'Fresh',img:'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&q=80'},
   {id:10,name:'Homemade Meat Pie',desc:'Flaky pastry filled with seasoned minced meat and vegetables. Baked fresh daily.',price:700,cat:'sides',badge:'chef',badgeText:'Snack',img:'https://images.unsplash.com/photo-1564834724105-918b73d1b9e0?w=600&q=80'},
   {id:11,name:'Moin Moin (Bean Pudding)',desc:'Steamed bean pudding with eggs and fish. A nutritious Nigerian classic.',price:500,cat:'sides',badge:'house',badgeText:'Protein',img:'https://images.unsplash.com/photo-1432139509613-5c4255815697?w=600&q=80'},
-  {id:12,name:'Peppered Snails (5 pcs)',desc:'Tender snails sautéed in spicy pepper sauce. A delicacy for the adventurous!',price:3000,cat:'sides',badge:'sig',badgeText:'Delicacy',img:'https://images.unsplash.com/photo-1596560548464-f010549b84d7?w=600&q=80'},
+  {id:12,name:'Peppered Snails (5 pcs)',desc:'Tender snails sautéed in spicy pepper sauce.',price:3000,cat:'sides',badge:'sig',badgeText:'Delicacy',img:'https://images.unsplash.com/photo-1596560548464-f010549b84d7?w=600&q=80'},
   {id:13,name:'Chapman Cocktail',desc:'Refreshing Nigerian mocktail with grenadine, Fanta, Sprite, and citrus slices.',price:1200,cat:'drinks',badge:'fav',badgeText:'Mocktail',img:'https://images.unsplash.com/photo-1621263764928-df1444c5e859?w=600&q=80'},
   {id:14,name:'Fresh Zobo Drink',desc:'Homemade hibiscus tea with ginger and pineapple. Served chilled.',price:600,cat:'drinks',badge:'house',badgeText:'Local',img:'https://images.unsplash.com/photo-1544145945-f90425340c7e?w=600&q=80'},
   {id:15,name:'Fresh Fruit Juice',desc:'Choice of orange, pineapple, or watermelon. Freshly squeezed.',price:1000,cat:'drinks',badge:'fav',badgeText:'Fresh',img:'https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=600&q=80'},
@@ -1033,47 +951,53 @@ const menuItems=[
   {id:17,name:'Bottled Water',desc:'Pure bottled water to cleanse your palate.',price:300,cat:'drinks',badge:'house',badgeText:'Water',img:'https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=600&q=80'},
 ];
 
-const galleryImgs=[
-  {src:'https://kimi-web-img.moonshot.cn/img/sisijemimah.com/ea3b296a20eafdd56735d94e2c555ef668118387.jpg'},
-  {src:'https://kimi-web-img.moonshot.cn/img/nkechiajaeroh.com/6632fd92a88d260eb4035fba8a47f813bb3ec8bf.jpg'},
-  {src:'https://kimi-web-img.moonshot.cn/img/weeatatlast.com/c1c7934dd7b61244c921515a7a1dd47db102fec6.jpg'},
-  {src:'https://kimi-web-img.moonshot.cn/img/eleanorsdish.com/df50f5ebe4c5dd488c02a83d3351965250a5dccf.jpg'},
-  {src:'https://kimi-web-img.moonshot.cn/img/d5mag.com/3ecf3e16f0c92d3553b27bf1500f18b175d2884a.jpg'},
-  {src:'https://kimi-web-img.moonshot.cn/img/thenurturingolive.com/a281482712a54d79d610f7021af48f594e451252.jpg'},
+const galleryImgs = [
+  'https://kimi-web-img.moonshot.cn/img/sisijemimah.com/ea3b296a20eafdd56735d94e2c555ef668118387.jpg',
+  'https://kimi-web-img.moonshot.cn/img/nkechiajaeroh.com/6632fd92a88d260eb4035fba8a47f813bb3ec8bf.jpg',
+  'https://kimi-web-img.moonshot.cn/img/weeatatlast.com/c1c7934dd7b61244c921515a7a1dd47db102fec6.jpg',
+  'https://kimi-web-img.moonshot.cn/img/eleanorsdish.com/df50f5ebe4c5dd488c02a83d3351965250a5dccf.jpg',
+  'https://kimi-web-img.moonshot.cn/img/d5mag.com/3ecf3e16f0c92d3553b27bf1500f18b175d2884a.jpg',
+  'https://kimi-web-img.moonshot.cn/img/thenurturingolive.com/a281482712a54d79d610f7021af48f594e451252.jpg',
 ];
 
-let cart=[];
-let currentPayMethod='online';
-let pendingOrderData=null;
-let authCurrentUser=null;
+/* ─── STATE ─── */
+let cart            = [];
+let currentPayMethod = 'pod';
+let pendingOrder    = null;
+let authCurrentUser = null;
 
-window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',scrollY>60));
-function toggleMobile(){
+/* ─── SCROLL REVEAL ─── */
+const obs = new IntersectionObserver(
+  es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } }),
+  { threshold: 0.1 }
+);
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+/* ─── NAV ─── */
+window.addEventListener('scroll', () =>
+  document.getElementById('navbar').classList.toggle('scrolled', scrollY > 60)
+);
+function toggleMobile() {
   document.getElementById('mobileMenu').classList.toggle('open');
-  document.querySelector('.hamburger').classList.toggle('open');
+  document.getElementById('hamburger').classList.toggle('open');
 }
-function closeMobile(){
+function closeMobile() {
   document.getElementById('mobileMenu').classList.remove('open');
-  var h=document.querySelector('.hamburger'); if(h) h.classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
 }
-function handleMobileAccount(){
-  if(authCurrentUser){
-    openProfileModal();
-  } else {
-    openAuthModal('login');
-  }
+function handleMobileAccount() {
+  if (authCurrentUser) openProfileModal(); else openAuthModal('login');
 }
 
-const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}}),{threshold:.1});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-
-function renderMenu(filter='all'){
-  const items=filter==='all'?menuItems:menuItems.filter(i=>i.cat===filter);
-  document.getElementById('menuGrid').innerHTML=items.map(item=>`
+/* ─── MENU ─── */
+const badgeMap = { sig:'badge-sig', house:'badge-house', fav:'badge-fav', chef:'badge-chef' };
+function renderMenu(filter = 'all') {
+  const items = filter === 'all' ? menuItems : menuItems.filter(i => i.cat === filter);
+  document.getElementById('menuGrid').innerHTML = items.map(item => `
     <div class="menu-card">
       <div class="menu-card-img">
         <img src="${item.img}" alt="${item.name}" loading="lazy"/>
-        <span class="menu-badge ${item.badge==='sig'?'badge-sig':item.badge==='house'?'badge-house':item.badge==='fav'?'badge-fav':'badge-chef'}">${item.badgeText}</span>
+        <span class="menu-badge ${badgeMap[item.badge]||'badge-house'}">${item.badgeText}</span>
         <button class="menu-fav-btn" onclick="toggleFav(this,event)"><i class="fa-regular fa-heart"></i></button>
       </div>
       <div class="menu-card-body">
@@ -1084,46 +1008,46 @@ function renderMenu(filter='all'){
           <button class="add-btn" onclick="addToCart(${item.id},event)"><i class="fa-solid fa-plus"></i></button>
         </div>
       </div>
-    </div>
-  `).join('');
+    </div>`).join('');
 }
 renderMenu();
-document.getElementById('menuFilters').addEventListener('click',e=>{
-  const btn=e.target.closest('.filter-btn');if(!btn)return;
-  document.querySelectorAll('#menuFilters .filter-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');renderMenu(btn.dataset.filter);
+document.getElementById('menuFilters').addEventListener('click', e => {
+  const btn = e.target.closest('.filter-btn'); if (!btn) return;
+  document.querySelectorAll('#menuFilters .filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active'); renderMenu(btn.dataset.filter);
 });
-function toggleFav(btn,e){
-  e.stopPropagation();btn.classList.toggle('liked');
-  btn.innerHTML=btn.classList.contains('liked')?'<i class="fa-solid fa-heart"></i>':'<i class="fa-regular fa-heart"></i>';
-  showToast('fa-heart',btn.classList.contains('liked')?'Added to favourites!':'Removed from favourites');
+function toggleFav(btn, e) {
+  e.stopPropagation(); btn.classList.toggle('liked');
+  btn.innerHTML = btn.classList.contains('liked') ? '<i class="fa-solid fa-heart"></i>' : '<i class="fa-regular fa-heart"></i>';
+  showToast('fa-heart', btn.classList.contains('liked') ? 'Added to favourites!' : 'Removed from favourites');
 }
 
-document.getElementById('galleryGrid').innerHTML=galleryImgs.map(img=>`
-  <div class="gallery-item" onclick="openLightbox('${img.src}')">
-    <img src="${img.src}" alt="Jollof Central" loading="lazy"/>
-    <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-  </div>
-`).join('');
+/* ─── GALLERY ─── */
+document.getElementById('galleryGrid').innerHTML = galleryImgs.map(src => `
+  <div class="gallery-item" onclick="openLightbox('${src}')">
+    <img src="${src}" alt="Jollof Central" loading="lazy"/>
+    <div class="gallery-overlay"><div class="gallery-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></div></div>
+  </div>`).join('');
 
-function openLightbox(src){document.getElementById('lightboxImg').src=src;document.getElementById('lightbox').classList.add('open');}
-function closeLightbox(){document.getElementById('lightbox').classList.remove('open');}
+function openLightbox(src) { document.getElementById('lightboxImg').src = src; document.getElementById('lightbox').classList.add('open'); }
+function closeLightbox()    { document.getElementById('lightbox').classList.remove('open'); }
 
-function addToCart(id,e){
+/* ─── CART ─── */
+function addToCart(id, e) {
   e.stopPropagation();
-  const item=menuItems.find(i=>i.id===id);
-  const ex=cart.find(i=>i.id===id);
-  if(ex){ex.qty++;}else{cart.push({...item,qty:1});}
-  updateCartUI();showToast('fa-cart-shopping',`${item.name} added to cart!`);
+  const item = menuItems.find(i => i.id === id);
+  const ex = cart.find(i => i.id === id);
+  if (ex) ex.qty++; else cart.push({ ...item, qty: 1 });
+  updateCartUI(); showToast('fa-cart-shopping', `${item.name} added to cart!`);
 }
-function updateCartUI(){
-  const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
-  const count=cart.reduce((s,i)=>s+i.qty,0);
-  document.getElementById('cartBadge').textContent=count;
-  document.getElementById('cartTotal').textContent=`₦${total.toLocaleString()}`;
-  const el=document.getElementById('cartItems');
-  if(!cart.length){el.innerHTML='<div class="cart-empty"><i class="fa-solid fa-utensils"></i><p>Your cart is empty.<br>Browse our menu and add items!</p></div>';return;}
-  el.innerHTML=cart.map(item=>`
+function updateCartUI() {
+  const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  const count = cart.reduce((s, i) => s + i.qty, 0);
+  document.getElementById('cartBadge').textContent = count;
+  document.getElementById('cartTotal').textContent  = `₦${total.toLocaleString()}`;
+  const el = document.getElementById('cartItems');
+  if (!cart.length) { el.innerHTML = '<div class="cart-empty"><i class="fa-solid fa-utensils"></i><p>Your cart is empty.<br>Browse our menu and add items!</p></div>'; return; }
+  el.innerHTML = cart.map(item => `
     <div class="cart-item">
       <img class="cart-item-img" src="${item.img}" alt="${item.name}"/>
       <div class="cart-item-info">
@@ -1136,320 +1060,454 @@ function updateCartUI(){
         </div>
       </div>
       <button class="cart-item-remove" onclick="removeFromCart(${item.id})"><i class="fa-solid fa-xmark"></i></button>
-    </div>
-  `).join('');
+    </div>`).join('');
 }
-function changeQty(id,d){
-  const item=cart.find(i=>i.id===id);if(!item)return;
-  item.qty+=d;if(item.qty<=0)cart=cart.filter(i=>i.id!==id);
+function changeQty(id, d) {
+  const item = cart.find(i => i.id === id); if (!item) return;
+  item.qty += d; if (item.qty <= 0) cart = cart.filter(i => i.id !== id);
   updateCartUI();
 }
-function removeFromCart(id){cart=cart.filter(i=>i.id!==id);updateCartUI();showToast('fa-trash','Item removed from cart');}
-function toggleCart(){document.getElementById('cartPanel').classList.toggle('open');document.getElementById('cartOverlay').classList.toggle('open');}
+function removeFromCart(id) { cart = cart.filter(i => i.id !== id); updateCartUI(); showToast('fa-trash', 'Item removed'); }
+function toggleCart() {
+  document.getElementById('cartPanel').classList.toggle('open');
+  document.getElementById('cartOverlay').classList.toggle('open');
+}
 
-function checkout(){
-  if(!cart.length){showToast('fa-circle-exclamation','Add items to your cart first!');return;}
-  if(!authCurrentUser){toggleCart();showToast('fa-circle-exclamation','Please sign in to place your order');setTimeout(()=>openAuthModal('login'),400);return;}
-  
+/* ─── CHECKOUT STEP 1 ─── */
+function checkout() {
+  if (!cart.length) { showToast('fa-circle-exclamation', 'Add items to your cart first!'); return; }
   toggleCart();
-  document.getElementById('checkoutStep1').style.display='block';
-  document.getElementById('checkoutStep2').style.display='none';
+  document.getElementById('checkoutStep1').style.display = 'block';
+  document.getElementById('checkoutStep2').style.display = 'none';
   selectOrderType('delivery');
-  
-  if(authCurrentUser){
-    document.getElementById('payName').value=authCurrentUser.full_name||'';
-    document.getElementById('payEmail').value=authCurrentUser.email||'';
-    document.getElementById('payPhone').value=authCurrentUser.phone||'';
-    if(authCurrentUser.delivery_address)document.getElementById('deliveryAddr').value=authCurrentUser.delivery_address;
+  if (authCurrentUser) {
+    document.getElementById('payName').value  = authCurrentUser.full_name  || '';
+    document.getElementById('payPhone').value = authCurrentUser.phone       || '';
+    document.getElementById('payEmail').value = authCurrentUser.email       || '';
+    const d = document.getElementById('deliveryAddr');
+    if (d && authCurrentUser.delivery_address) d.value = authCurrentUser.delivery_address;
   }
-  
-  const subtotal=cart.reduce((s,i)=>s+i.price*i.qty,0);
-  const miniEl=document.getElementById('miniCartSummary');
-  miniEl.innerHTML=cart.map(i=>`<div class="pay-summary-row"><span>${i.name} x ${i.qty}</span><span>₦${(i.price*i.qty).toLocaleString()}</span></div>`).join('')+
-    `<div class="pay-summary-row" style="color:var(--muted);"><span>Delivery fee</span><span id="miniDeliveryFee">₦${DELIVERY_FEE.toLocaleString()}</span></div>`+
-    `<div class="pay-summary-row total"><span>Estimated Total</span><span id="miniTotal">₦${(subtotal+DELIVERY_FEE).toLocaleString()}</span></div>`;
-  
+  buildMiniSummary();
   document.getElementById('payModal').classList.add('open');
 }
 
-function selectOrderType(type){
-  const isDelivery=type==='delivery';
-  document.getElementById('deliveryBtn').classList.toggle('active',isDelivery);
-  document.getElementById('pickupBtn').classList.toggle('active',!isDelivery);
-  document.getElementById('deliveryAddrWrap').style.display=isDelivery?'block':'none';
-  document.getElementById('pickupAddrWrap').style.display=isDelivery?'none':'block';
-  
-  const subtotal=cart.reduce((s,i)=>s+i.price*i.qty,0);
-  const fee=isDelivery?DELIVERY_FEE:0;
-  const miniF=document.getElementById('miniDeliveryFee');
-  const miniT=document.getElementById('miniTotal');
-  if(miniF)miniF.textContent=isDelivery?`₦${DELIVERY_FEE.toLocaleString()}`:'Free (Pickup)';
-  if(miniT)miniT.textContent=`₦${(subtotal+fee).toLocaleString()}`;
-  
-  const podNote=document.getElementById('podNote');
-  const podNoteText=document.getElementById('podNoteText');
-  if(podNote&&podNote.style.display!=='none'&&podNoteText){
-    podNoteText.textContent=isDelivery?'Pay with cash when your order arrives. Please have the exact amount ready.':'Pay with cash when you collect your order at the restaurant.';
-  }
+function buildMiniSummary() {
+  const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  const isD = document.getElementById('deliveryBtn').classList.contains('active');
+  document.getElementById('miniCartSummary').innerHTML =
+    cart.map(i => `<div class="pay-summary-row"><span>${i.name} × ${i.qty}</span><span>₦${(i.price*i.qty).toLocaleString()}</span></div>`).join('') +
+    `<div class="pay-summary-row" style="color:var(--muted);"><span>Delivery fee</span><span id="miniDeliveryFee">${isD?'₦'+DELIVERY_FEE.toLocaleString():'Free (Pickup)'}</span></div>` +
+    `<div class="pay-summary-row total"><span>Estimated Total</span><span id="miniTotal">₦${(subtotal+(isD?DELIVERY_FEE:0)).toLocaleString()}</span></div>`;
 }
 
-function goToPayStep(){
-  const isDelivery=document.getElementById('deliveryBtn').classList.contains('active');
-  const addr=document.getElementById('deliveryAddr').value.trim();
-  if(isDelivery&&!addr){showToast('fa-circle-exclamation','Please enter your delivery address!');document.getElementById('deliveryAddr').focus();return;}
-  
-  const subtotal=cart.reduce((s,i)=>s+i.price*i.qty,0);
-  const deliveryFee=isDelivery?DELIVERY_FEE:0;
-  const grandTotal=subtotal+deliveryFee;
-  
-  const summaryEl=document.getElementById('paySummary');
-  summaryEl.innerHTML=cart.map(i=>`<div class="pay-summary-row"><span>${i.name} x ${i.qty}</span><span>₦${(i.price*i.qty).toLocaleString()}</span></div>`).join('')+
-    `<div class="pay-summary-row"><span>${isDelivery?'Delivery to: '+addr:'Pickup from restaurant'}</span><span>${isDelivery?`₦${DELIVERY_FEE.toLocaleString()}`:'Free'}</span></div>`+
+function selectOrderType(type) {
+  const isD = type === 'delivery';
+  document.getElementById('deliveryBtn').classList.toggle('active', isD);
+  document.getElementById('pickupBtn').classList.toggle('active', !isD);
+  document.getElementById('deliveryAddrWrap').style.display = isD ? 'block' : 'none';
+  document.getElementById('pickupAddrWrap').style.display   = isD ? 'none'  : 'block';
+  const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  const mFee = document.getElementById('miniDeliveryFee');
+  const mTot = document.getElementById('miniTotal');
+  if (mFee) mFee.textContent = isD ? `₦${DELIVERY_FEE.toLocaleString()}` : 'Free (Pickup)';
+  if (mTot) mTot.textContent = `₦${(subtotal + (isD ? DELIVERY_FEE : 0)).toLocaleString()}`;
+  const pt = document.getElementById('podInfoText');
+  if (pt) pt.textContent = isD
+    ? 'Have the exact cash amount ready when your order arrives.'
+    : 'Pay with cash when you collect at the restaurant.';
+}
+
+/* ─── CHECKOUT STEP 2 ─── */
+function goToPayStep() {
+  const isD = document.getElementById('deliveryBtn').classList.contains('active');
+  const addr = document.getElementById('deliveryAddr').value.trim();
+  if (isD && !addr) { showToast('fa-circle-exclamation', 'Please enter your delivery address!'); document.getElementById('deliveryAddr').focus(); return; }
+  const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  const fee = isD ? DELIVERY_FEE : 0;
+  const grandTotal = subtotal + fee;
+  document.getElementById('paySummary').innerHTML =
+    cart.map(i => `<div class="pay-summary-row"><span>${i.name} × ${i.qty}</span><span>₦${(i.price*i.qty).toLocaleString()}</span></div>`).join('') +
+    `<div class="pay-summary-row"><span>${isD?'Delivery to: '+addr:'Pickup from restaurant'}</span><span>${isD?'₦'+DELIVERY_FEE.toLocaleString():'Free'}</span></div>` +
     `<div class="pay-summary-row total"><span>Total</span><span>₦${grandTotal.toLocaleString()}</span></div>`;
-  
-  pendingOrderData={cart:[...cart],isDelivery,addr,subtotal,deliveryFee,grandTotal};
-  selectPayMethod('online');
-  document.getElementById('checkoutStep1').style.display='none';
-  document.getElementById('checkoutStep2').style.display='block';
+  pendingOrder = { cart: [...cart], isDelivery: isD, addr, subtotal, fee, grandTotal };
+  selectPayMethod('pod');
+  document.getElementById('checkoutStep1').style.display = 'none';
+  document.getElementById('checkoutStep2').style.display = 'block';
 }
 
-function goBackToStep1(){
-  document.getElementById('checkoutStep2').style.display='none';
-  document.getElementById('checkoutStep1').style.display='block';
+function goBackToStep1() {
+  document.getElementById('checkoutStep2').style.display = 'none';
+  document.getElementById('checkoutStep1').style.display = 'block';
 }
 
-function selectPayMethod(method){
-  currentPayMethod=method;
-  document.getElementById('tabPayNow').classList.toggle('active',method==='online');
-  document.getElementById('tabPOD').classList.toggle('active',method==='pod');
-  document.getElementById('podNote').style.display=method==='pod'?'flex':'none';
-  document.getElementById('paystackBadge').style.display=method==='online'?'flex':'none';
-  
-  const btn=document.getElementById('payNowBtn');
-  const txt=document.getElementById('payBtnText');
-  if(method==='online'){
-    btn.className='btn btn-gold';
-    txt.textContent='Pay Now with Paystack';
-    btn.querySelector('i').className='fa-solid fa-lock';
-  } else {
-    btn.className='btn btn-wa';
-    txt.textContent='Confirm Order (Pay on Delivery)';
-    btn.querySelector('i').className='fa-solid fa-check';
-  }
+function selectPayMethod(method) {
+  currentPayMethod = method;
+  document.getElementById('tabPOD').classList.toggle('active', method === 'pod');
+  document.getElementById('tabTransfer').classList.toggle('active', method === 'transfer');
+  document.getElementById('podInfo').style.display      = method === 'pod'      ? 'flex'  : 'none';
+  document.getElementById('transferInfo').style.display = method === 'transfer' ? 'block' : 'none';
 }
 
-function initiatePayment(){
-  const name=document.getElementById('payName').value.trim();
-  const email=document.getElementById('payEmail').value.trim();
-  const phone=document.getElementById('payPhone').value.trim();
-  
-  if(!name){showToast('fa-circle-exclamation','Please enter your name');return;}
-  if(!email||!email.includes('@')){showToast('fa-circle-exclamation','Please enter a valid email address');return;}
-  if(!phone){showToast('fa-circle-exclamation','Please enter your phone number');return;}
-  
-  if(currentPayMethod==='pod'){
-    onPaymentSuccess({reference:'POD-'+Date.now()},name,email,phone,false);
-    return;
-  }
-  
-  const {grandTotal}=pendingOrderData;
-  const reference='JC-'+Date.now()+'-'+Math.floor(Math.random()*9999);
-  
-  const btn=document.getElementById('payNowBtn');
-  const txt=document.getElementById('payBtnText');
-  btn.classList.add('pay-btn-loading');
-  txt.textContent='Opening Paystack...';
-  btn.querySelector('i').className='fa-solid fa-spinner';
-  
-  setTimeout(()=>{
-    document.getElementById('payModal').classList.remove('open');
-    btn.classList.remove('pay-btn-loading');
-    txt.textContent='Pay Now with Paystack';
-    btn.querySelector('i').className='fa-solid fa-lock';
-    
-    const handler=PaystackPop.setup({
-      key:PAYSTACK_PUBLIC_KEY,
-      email:email,
-      amount:grandTotal*100,
-      currency:'NGN',
-      ref:reference,
-      firstname:name.split(' ')[0],
-      lastname:name.split(' ').slice(1).join(' ')||'',
-      phone:phone,
-      metadata:{custom_fields:[
-        {display_name:'Customer Name',variable_name:'name',value:name},
-        {display_name:'Phone',variable_name:'phone',value:phone},
-        {display_name:'Order Type',variable_name:'order_type',value:pendingOrderData.isDelivery?'Delivery':'Pickup'},
-        {display_name:'Delivery Address',variable_name:'address',value:pendingOrderData.addr||'N/A'},
-      ]},
-      label:'Jollof Central',
-      onClose:function(){showToast('fa-circle-xmark','Payment cancelled. Your cart is saved.');},
-      callback:function(response){onPaymentSuccess(response,name,email,phone,true);}
-    });
-    handler.openIframe();
-  },400);
+function copyAccNum() {
+  const num = document.getElementById('bankAccNum').textContent;
+  navigator.clipboard.writeText(num).then(() => showToast('fa-copy', `Copied: ${num}`))
+    .catch(() => showToast('fa-copy', `Account: ${num}`));
 }
 
-function onPaymentSuccess(response,name,email,phone,paid){
-  const{cart:cartSnap,isDelivery,addr,grandTotal,deliveryFee}=pendingOrderData;
-  const orderPayload={
-    ref:response.reference,
-    customerName:name,
-    customerEmail:email,
-    customerPhone:phone,
-    isPaid:paid,
-    isDelivery:isDelivery,
-    deliveryAddress:addr||'',
-    grandTotal:grandTotal,
-    deliveryFee:deliveryFee,
-    subtotal:grandTotal-deliveryFee,
-    items:cartSnap.map(i=>({id:i.id,name:i.name,qty:i.qty,price:i.price})),
-  };
-  
-  try{sessionStorage.setItem('jc_last_order',JSON.stringify(orderPayload));}catch(e){}
-  
-  cart=[];updateCartUI();pendingOrderData=null;
-  
-  document.getElementById('orderDetails').innerHTML=`
-    <div><i class="fa-solid fa-receipt" style="color:var(--gold);width:20px;"></i> Order Ref: <strong>${response.reference}</strong></div>
-    <div><i class="fa-solid fa-user" style="color:var(--gold);width:20px;"></i> ${name}</div>
-    <div><i class="fa-solid fa-phone" style="color:var(--gold);width:20px;"></i> ${phone}</div>
-    <div><i class="fa-solid ${isDelivery?'fa-motorcycle':'fa-store'}" style="color:var(--gold);width:20px;"></i> ${isDelivery?'Delivery to: '+addr:'Pickup at 86 Adesuwa Rd'}</div>
+/* ─── CONFIRM ORDER ─── */
+function confirmOrder() {
+  const name  = document.getElementById('payName').value.trim();
+  const phone = document.getElementById('payPhone').value.trim();
+  const email = document.getElementById('payEmail').value.trim();
+  if (!name)  { showToast('fa-circle-exclamation', 'Please enter your name');         document.getElementById('payName').focus();  return; }
+  if (!phone) { showToast('fa-circle-exclamation', 'Please enter your phone number'); document.getElementById('payPhone').focus(); return; }
+
+  const { cart: snap, isDelivery, addr, grandTotal, fee } = pendingOrder;
+  const ref = 'JC-' + Date.now();
+  const payLabel = currentPayMethod === 'pod'
+    ? (isDelivery ? 'Pay on Delivery (Cash)' : 'Pay at Pickup (Cash)')
+    : `Bank Transfer (${BANK_NAME} — ${BANK_ACCT})`;
+
+  const itemLines = snap.map(i => `  • ${i.name} x${i.qty} = ₦${(i.price*i.qty).toLocaleString()}`).join('\n');
+  const msg = [
+    `🍚 *New Order — Jollof Central*`,
+    `Order Ref: ${ref}`,``,
+    `*Items:*`, itemLines, ``,
+    `*Order Type:* ${isDelivery ? 'Delivery' : 'Pickup'}`,
+    isDelivery ? `*Address:* ${addr}` : `*Pickup:* 86 Adesuwa Rd, GRA, Benin City`,
+    `*Payment:* ${payLabel}`,``,
+    `*Customer:*`, `Name: ${name}`, `Phone: ${phone}`,
+    email ? `Email: ${email}` : ``,``,
+    `Subtotal: ₦${(grandTotal-fee).toLocaleString()}`,
+    isDelivery ? `Delivery: ₦${fee.toLocaleString()}` : '',
+    `*TOTAL: ₦${grandTotal.toLocaleString()}*`,``,
+    currentPayMethod === 'transfer'
+      ? `✅ Transfer sent to ${BANK_NAME} (${BANK_ACCT} — ${BANK_ACCT_NAME}). Please confirm.`
+      : `✅ Will pay ${isDelivery ? 'on delivery' : 'at pickup'}.`,
+  ].filter(l => l !== '').join('\n');
+
+  /* Save to order history */
+  saveOrderToHistory({
+    ref, name, phone, email, isDelivery, addr,
+    items: snap.map(i => ({ name: i.name, qty: i.qty, price: i.price })),
+    grandTotal, fee, payMethod: currentPayMethod, payLabel,
+    date: new Date().toISOString(), status: 'confirmed'
+  });
+
+  cart = []; updateCartUI(); closeModal('payModal');
+
+  document.getElementById('orderDetails').innerHTML = `
+    <div><i class="fa-solid fa-receipt" style="color:var(--gold);width:20px;"></i> Ref: <strong>${ref}</strong></div>
+    <div><i class="fa-solid fa-user"    style="color:var(--gold);width:20px;"></i> ${name}</div>
+    <div><i class="fa-solid fa-phone"   style="color:var(--gold);width:20px;"></i> ${phone}</div>
+    <div><i class="fa-solid fa-${isDelivery?'motorcycle':'store'}" style="color:var(--gold);width:20px;"></i> ${isDelivery?'Delivery to: '+addr:'Pickup at restaurant'}</div>
     <div><i class="fa-solid fa-money-bill" style="color:var(--gold);width:20px;"></i> Total: <strong>₦${grandTotal.toLocaleString()}</strong></div>
-  `;
-  closeModal('payModal');
+    <div><i class="fa-solid fa-credit-card" style="color:var(--gold);width:20px;"></i> Payment: ${payLabel}</div>`;
   document.getElementById('orderModal').classList.add('open');
+  window.open(`https://wa.me/${RESTAURANT_WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank');
+  pendingOrder = null;
 }
 
-let toastT;
-function showToast(icon,msg){
-  clearTimeout(toastT);
-  const t=document.getElementById('toast');
-  t.innerHTML=`<i class="fa-solid ${icon}"></i><span>${msg}</span>`;
-  t.classList.add('show');
-  toastT=setTimeout(()=>t.classList.remove('show'),3200);
+/* ─── ORDER HISTORY (localStorage) ─── */
+function getOrderHistory() {
+  try { return JSON.parse(localStorage.getItem('jc_order_history') || '[]'); } catch { return []; }
 }
-function closeModal(id){document.getElementById(id).classList.remove('open');}
-document.querySelectorAll('.modal-bg').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('open');}));
-document.addEventListener('keydown',e=>{
-  if(e.key==='Escape'){
-    document.querySelectorAll('.modal-bg.open').forEach(m=>m.classList.remove('open'));
-    closeLightbox();
+function saveOrderToHistory(order) {
+  const history = getOrderHistory();
+  history.unshift(order); /* newest first */
+  if (history.length > 50) history.splice(50); /* cap at 50 */
+  localStorage.setItem('jc_order_history', JSON.stringify(history));
+}
+
+function openOrderHistoryModal() {
+  closeUserDropdown();
+  renderOrderHistory();
+  document.getElementById('historyModal').classList.add('open');
+}
+
+function renderOrderHistory() {
+  const history = getOrderHistory();
+  const el = document.getElementById('orderHistoryList');
+  if (!history.length) {
+    el.innerHTML = `
+      <div class="history-empty">
+        <i class="fa-solid fa-clock-rotate-left"></i>
+        <p>No orders yet!<br>Place your first order and it will appear here.</p>
+        <button class="btn btn-gold btn-sm" style="margin:16px auto 0;" onclick="closeModal('historyModal');toggleCart();">
+          <i class="fa-solid fa-utensils"></i> Order Now
+        </button>
+      </div>`; return;
   }
+  el.innerHTML = history.map((o, idx) => `
+    <div class="order-card">
+      <div class="order-card-head" onclick="toggleOrderCard(${idx})">
+        <div class="order-card-left">
+          <span class="order-ref">${o.ref}</span>
+          <span class="order-date">${formatDate(o.date)}</span>
+        </div>
+        <div class="order-card-right">
+          <span class="order-total-badge">₦${o.grandTotal.toLocaleString()}</span>
+          <span class="order-status status-confirmed">Confirmed</span>
+          <i class="fa-solid fa-chevron-down order-chevron" id="chev-${idx}"></i>
+        </div>
+      </div>
+      <div class="order-card-body" id="ocb-${idx}">
+        ${o.items.map(i => `
+          <div class="order-item-row">
+            <span class="item-name">${i.name} × ${i.qty}</span>
+            <span>₦${(i.price*i.qty).toLocaleString()}</span>
+          </div>`).join('')}
+        <div class="order-meta-row">
+          <span><i class="fa-solid fa-${o.isDelivery?'motorcycle':'store'}"></i> ${o.isDelivery?'Delivery to: '+o.addr:'Pickup'}</span>
+          <span><i class="fa-solid fa-credit-card"></i> ${o.payLabel}</span>
+          <span><i class="fa-solid fa-phone"></i> ${o.phone}</span>
+        </div>
+        <button class="btn btn-gold btn-sm order-reorder-btn" onclick="reorder(${idx})">
+          <i class="fa-solid fa-rotate-right"></i> Reorder
+        </button>
+      </div>
+    </div>`).join('');
+}
+
+function toggleOrderCard(idx) {
+  const body = document.getElementById(`ocb-${idx}`);
+  const chev = document.getElementById(`chev-${idx}`);
+  const isOpen = body.classList.contains('open');
+  /* Close all */
+  document.querySelectorAll('.order-card-body').forEach(b => b.classList.remove('open'));
+  document.querySelectorAll('.order-chevron').forEach(c => c.classList.remove('open'));
+  if (!isOpen) { body.classList.add('open'); chev.classList.add('open'); }
+}
+
+function reorder(idx) {
+  const history = getOrderHistory();
+  const o = history[idx];
+  if (!o) return;
+  o.items.forEach(hi => {
+    const item = menuItems.find(m => m.name === hi.name);
+    if (!item) return;
+    const ex = cart.find(c => c.id === item.id);
+    if (ex) ex.qty += hi.qty; else cart.push({ ...item, qty: hi.qty });
+  });
+  updateCartUI();
+  closeModal('historyModal');
+  toggleCart();
+  showToast('fa-rotate-right', 'Items added to cart!');
+}
+
+function clearOrderHistory() {
+  if (!confirm('Clear all order history? This cannot be undone.')) return;
+  localStorage.removeItem('jc_order_history');
+  renderOrderHistory();
+  showToast('fa-trash', 'Order history cleared');
+}
+
+function formatDate(iso) {
+  if (!iso) return '';
+  const d = new Date(iso);
+  return d.toLocaleDateString('en-NG', { day:'numeric', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit' });
+}
+
+/* ─── PROFILE MODAL ─── */
+function openProfileModal() {
+  closeUserDropdown();
+  if (!authCurrentUser) { openAuthModal('login'); return; }
+  const u = authCurrentUser;
+  const initials = (u.full_name||'U').split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
+  document.getElementById('profileAvatar').textContent       = initials;
+  document.getElementById('profileName').textContent         = u.full_name || '';
+  document.getElementById('profileEmailDisplay').textContent = u.email || '';
+  document.getElementById('editName').value  = u.full_name  || '';
+  document.getElementById('editPhone').value = u.phone       || '';
+  document.getElementById('editEmail').value = u.email       || '';
+  document.getElementById('editAddr').value  = u.delivery_address || '';
+  switchProfileTab('profile');
+  document.getElementById('profileModal').classList.add('open');
+}
+
+function switchProfileTab(tab) {
+  document.getElementById('profileView').style.display  = tab === 'profile'  ? 'block' : 'none';
+  document.getElementById('passwordView').style.display = tab === 'password' ? 'block' : 'none';
+  document.getElementById('profileTab').classList.toggle('active', tab === 'profile');
+  document.getElementById('passwordTab').classList.toggle('active', tab === 'password');
+}
+
+function saveProfile() {
+  const name  = document.getElementById('editName').value.trim();
+  const phone = document.getElementById('editPhone').value.trim();
+  const email = document.getElementById('editEmail').value.trim();
+  const addr  = document.getElementById('editAddr').value.trim();
+  if (!name || !phone || !email) { showToast('fa-circle-exclamation', 'Name, phone, and email are required'); return; }
+  authCurrentUser = { ...authCurrentUser, full_name: name, phone, email, delivery_address: addr };
+  localStorage.setItem('jc_customer_data', JSON.stringify(authCurrentUser));
+  authSetUISignedIn(authCurrentUser);
+  /* Refresh display */
+  const initials = name.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
+  document.getElementById('profileAvatar').textContent       = initials;
+  document.getElementById('profileName').textContent         = name;
+  document.getElementById('profileEmailDisplay').textContent = email;
+  closeModal('profileModal');
+  showToast('fa-circle-check', 'Profile updated successfully!');
+}
+
+function changePassword() {
+  const cur  = document.getElementById('curPass').value;
+  const nw   = document.getElementById('newPass').value;
+  const conf = document.getElementById('confPass').value;
+  if (!cur)              { showToast('fa-circle-exclamation', 'Enter your current password'); return; }
+  if (nw.length < 6)    { showToast('fa-circle-exclamation', 'New password must be at least 6 characters'); return; }
+  if (nw !== conf)       { showToast('fa-circle-exclamation', 'Passwords do not match'); return; }
+  const stored = localStorage.getItem('jc_customer_data');
+  if (stored) {
+    const u = JSON.parse(stored);
+    if (u.password && u.password !== cur) { showToast('fa-circle-exclamation', 'Current password is incorrect'); return; }
+    u.password = nw;
+    localStorage.setItem('jc_customer_data', JSON.stringify(u));
+    authCurrentUser = u;
+  }
+  document.getElementById('curPass').value = '';
+  document.getElementById('newPass').value = '';
+  document.getElementById('confPass').value = '';
+  closeModal('profileModal');
+  showToast('fa-lock', 'Password updated successfully!');
+}
+
+/* ─── AUTH ─── */
+function openAuthModal(tab) { switchAuthTab(tab); document.getElementById('authModalBg').classList.add('open'); document.body.style.overflow = 'hidden'; }
+function closeAuthModal()    { document.getElementById('authModalBg').classList.remove('open'); document.body.style.overflow = ''; }
+function switchAuthTab(tab) {
+  document.getElementById('aLoginView').style.display  = tab === 'login'  ? 'block' : 'none';
+  document.getElementById('aSignupView').style.display = tab === 'signup' ? 'block' : 'none';
+  document.getElementById('aTabLogin').classList.toggle('active', tab === 'login');
+  document.getElementById('aTabSignup').classList.toggle('active', tab === 'signup');
+}
+function authToggleEye(inputId, btn) {
+  const inp = document.getElementById(inputId); const ic = btn.querySelector('i');
+  if (inp.type === 'password') { inp.type = 'text'; ic.className = 'fa-regular fa-eye-slash'; }
+  else { inp.type = 'password'; ic.className = 'fa-regular fa-eye'; }
+}
+function authSetLoading(btnId, on) { document.getElementById(btnId)?.classList.toggle('a-loading', on); }
+
+function showForgotPassword() {
+  const email = document.getElementById('aLoginEmail').value.trim();
+  if (!email) {
+    showToast('fa-circle-info', 'Enter your email above, then try again'); return;
+  }
+  closeAuthModal();
+  showToast('fa-envelope', `Password reset link sent to ${email} (demo)`);
+}
+
+function authSubmitLogin() {
+  const email = document.getElementById('aLoginEmail').value.trim();
+  const pass  = document.getElementById('aLoginPass').value;
+  if (!email) { showToast('fa-circle-exclamation', 'Please enter your email'); return; }
+  if (!pass)  { showToast('fa-circle-exclamation', 'Please enter your password'); return; }
+  authSetLoading('aLoginBtn', true);
+  setTimeout(() => {
+    authSetLoading('aLoginBtn', false);
+    const stored = localStorage.getItem('jc_customer_data');
+    if (!stored) { showToast('fa-circle-exclamation', 'No account found — please sign up'); return; }
+    const u = JSON.parse(stored);
+    if (u.email !== email) { showToast('fa-circle-exclamation', 'Email not found. Please sign up'); return; }
+    if (u.password && u.password !== pass) { showToast('fa-circle-exclamation', 'Incorrect password'); return; }
+    authSetUISignedIn(u); closeAuthModal();
+    showToast('fa-circle-check', `Welcome back, ${u.full_name.split(' ')[0]}!`);
+  }, 900);
+}
+
+function authSubmitSignup() {
+  const name    = document.getElementById('aSuName').value.trim();
+  const phone   = document.getElementById('aSuPhone').value.trim();
+  const email   = document.getElementById('aSuEmail').value.trim();
+  const addr    = document.getElementById('aSuAddr').value.trim();
+  const pass    = document.getElementById('aSuPass').value;
+  const confirm = document.getElementById('aSuConfirm').value;
+  const agreed  = document.getElementById('aAgreeTerms').checked;
+  if (!name || !phone || !email || !addr || !pass) { showToast('fa-circle-exclamation', 'Please fill all required fields'); return; }
+  if (pass.length < 6) { showToast('fa-circle-exclamation', 'Password must be at least 6 characters'); return; }
+  if (pass !== confirm) { showToast('fa-circle-exclamation', 'Passwords do not match'); return; }
+  if (!agreed) { showToast('fa-circle-exclamation', 'Please agree to the terms'); return; }
+  authSetLoading('aSignupBtn', true);
+  setTimeout(() => {
+    authSetLoading('aSignupBtn', false);
+    const user = { full_name: name, email, phone, delivery_address: addr, password: pass };
+    localStorage.setItem('jc_customer_data', JSON.stringify(user));
+    authSetUISignedIn(user);
+    const d = document.getElementById('deliveryAddr');
+    if (d && !d.value) d.value = addr;
+    closeAuthModal();
+    showToast('fa-circle-check', `Account created! Welcome, ${name.split(' ')[0]}!`);
+  }, 900);
+}
+
+function authSetUISignedIn(user) {
+  authCurrentUser = user;
+  document.getElementById('navAuthBtn').style.display = 'none';
+  const initials = (user.full_name || 'U').split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2);
+  document.getElementById('navUserAvatar').textContent = initials;
+  document.getElementById('navUserName').textContent   = user.full_name.split(' ')[0];
+  document.getElementById('navUserChip').classList.add('visible');
+  const lbl = document.getElementById('mobileAccountLabel');
+  if (lbl) lbl.textContent = `Hi, ${user.full_name.split(' ')[0]}`;
+}
+
+function toggleUserDropdown() { document.getElementById('navUserDropdown').classList.toggle('open'); }
+function closeUserDropdown()   { document.getElementById('navUserDropdown').classList.remove('open'); }
+
+function signOut() {
+  closeUserDropdown();
+  authCurrentUser = null;
+  localStorage.removeItem('jc_customer_data');
+  document.getElementById('navAuthBtn').style.display = '';
+  document.getElementById('navUserChip').classList.remove('visible');
+  const lbl = document.getElementById('mobileAccountLabel');
+  if (lbl) lbl.textContent = 'Sign In / My Account';
+  showToast('fa-right-from-bracket', 'Signed out. See you soon!');
+}
+
+/* Close dropdown on outside click */
+document.addEventListener('click', e => {
+  const chip = document.getElementById('navUserChip');
+  const drop = document.getElementById('navUserDropdown');
+  if (chip && drop && !chip.contains(e.target) && !drop.contains(e.target)) drop.classList.remove('open');
 });
 
-function openAuthModal(tab){
-  switchAuthTab(tab);
-  document.getElementById('authModalBg').classList.add('open');
-  document.body.style.overflow='hidden';
-}
-function closeAuthModal(){
-  document.getElementById('authModalBg').classList.remove('open');
-  document.body.style.overflow='';
-}
-function switchAuthTab(tab){
-  document.getElementById('aLoginView').style.display=tab==='login'?'block':'none';
-  document.getElementById('aSignupView').style.display=tab==='signup'?'block':'none';
-  document.getElementById('aTabLogin').classList.toggle('active',tab==='login');
-  document.getElementById('aTabSignup').classList.toggle('active',tab==='signup');
-}
-function authToggleEye(inputId,btn){
-  const input=document.getElementById(inputId);
-  const icon=btn.querySelector('i');
-  if(input.type==='password'){input.type='text';icon.className='fa-regular fa-eye-slash';}
-  else{input.type='password';icon.className='fa-regular fa-eye';}
-}
-function authSetLoading(btnId,on){
-  document.getElementById(btnId)?.classList.toggle('a-loading',on);
+/* ─── MODALS ─── */
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+document.querySelectorAll('.modal-bg').forEach(m =>
+  m.addEventListener('click', e => { if (e.target === m) m.classList.remove('open'); })
+);
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Escape') return;
+  document.querySelectorAll('.modal-bg.open').forEach(m => m.classList.remove('open'));
+  if (document.getElementById('authModalBg').classList.contains('open')) closeAuthModal();
+  closeLightbox(); closeUserDropdown();
+});
+
+/* ─── TOAST ─── */
+let toastTimer;
+function showToast(icon, msg) {
+  clearTimeout(toastTimer);
+  const t = document.getElementById('toast');
+  t.innerHTML = `<i class="fa-solid ${icon}"></i><span id="toastMsg">${msg}</span>`;
+  t.classList.add('show');
+  toastTimer = setTimeout(() => t.classList.remove('show'), 3200);
 }
 
-function authSubmitLogin(){
-  const email=document.getElementById('aLoginEmail').value.trim();
-  const pass=document.getElementById('aLoginPass').value;
-  
-  if(!email){showToast('fa-circle-exclamation','Please enter your email');return;}
-  if(!pass){showToast('fa-circle-exclamation','Please enter your password');return;}
-  
-  authSetLoading('aLoginBtn',true);
-  setTimeout(()=>{
-    authSetLoading('aLoginBtn',false);
-    authCurrentUser={full_name:'Demo User',email:email,phone:'08051234567',delivery_address:'GRA, Benin City'};
-    localStorage.setItem('jc_customer_data',JSON.stringify(authCurrentUser));
-    authSetUISignedIn(authCurrentUser);
-    closeAuthModal();
-    showToast('fa-circle-check','Welcome back!');
-  },1000);
+/* ─── COOKIE ─── */
+function cookieConsent(choice) {
+  localStorage.setItem('jc_cookie_consent', choice);
+  document.getElementById('cookieBanner').classList.remove('show');
+  showToast(choice === 'accept' ? 'fa-cookie-bite' : 'fa-shield-halved',
+    choice === 'accept' ? 'Cookie preferences saved!' : 'Non-essential cookies declined.');
 }
 
-function authSubmitSignup(){
-  const name=document.getElementById('aSuName').value.trim();
-  const phone=document.getElementById('aSuPhone').value.trim();
-  const email=document.getElementById('aSuEmail').value.trim();
-  const addr=document.getElementById('aSuAddr').value.trim();
-  const pass=document.getElementById('aSuPass').value;
-  const confirm=document.getElementById('aSuConfirm').value;
-  const agreed=document.getElementById('aAgreeTerms').checked;
-  
-  if(!name||!phone||!email||!addr||!pass){showToast('fa-circle-exclamation','Please fill all fields');return;}
-  if(pass!==confirm){showToast('fa-circle-exclamation','Passwords do not match');return;}
-  if(!agreed){showToast('fa-circle-exclamation','Please agree to terms');return;}
-  
-  authSetLoading('aSignupBtn',true);
-  setTimeout(()=>{
-    authSetLoading('aSignupBtn',false);
-    authCurrentUser={full_name:name,email:email,phone:phone,delivery_address:addr};
-    localStorage.setItem('jc_customer_data',JSON.stringify(authCurrentUser));
-    authSetUISignedIn(authCurrentUser);
-    const d=document.getElementById('deliveryAddr'); if(d&&!d.value)d.value=addr;
-    closeAuthModal();
-    showToast('fa-circle-check','Account created! Welcome to Jollof Central.');
-  },1000);
-}
-
-function authSetUISignedIn(user){
-  authCurrentUser=user;
-  document.getElementById('navAuthBtn').style.display='none';
-  const initials=(user.full_name||'U').split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
-  document.getElementById('navUserAvatar').textContent=initials;
-  document.getElementById('navUserName').textContent=user.full_name.split(' ')[0];
-  document.getElementById('navUserChip').classList.add('visible');
-}
-function toggleUserDropdown(){document.getElementById('navUserDropdown').classList.toggle('open');}
-function signOut(){
-  closeUserDropdown();
-  authCurrentUser=null;
-  localStorage.removeItem('jc_customer_data');
-  document.getElementById('navAuthBtn').style.display='';
-  document.getElementById('navUserChip').classList.remove('visible');
-  showToast('fa-right-from-bracket','Signed out. See you soon!');
-}
-
-function openProfileModal(){
-  closeUserDropdown();
-  if(!authCurrentUser){showToast('fa-circle-exclamation','Please sign in first');return;}
-  showToast('fa-user','Profile feature coming soon!');
-}
-function openOrderHistoryModal(){
-  closeUserDropdown();
-  showToast('fa-clock-rotate-left','Order history coming soon!');
-}
-function openAddressModal(){
-  closeUserDropdown();
-  showToast('fa-location-dot','Address management coming soon!');
-}
-
-function cookieConsent(choice){
-  localStorage.setItem('jc_cookie_consent',choice);
-  document.getElementById('cookieBanner')?.classList.remove('show');
-  showToast(choice==='accept'?'fa-cookie-bite':'fa-shield-halved',choice==='accept'?'Cookie preferences saved!':'Non-essential cookies rejected.');
-}
-
-(function(){
-  if(!localStorage.getItem('jc_cookie_consent')){
-    setTimeout(()=>document.getElementById('cookieBanner')?.classList.add('show'),2500);
-  }
-  const stored=localStorage.getItem('jc_customer_data');
-  if(stored){try{authSetUISignedIn(JSON.parse(stored));}catch(e){}}
+/* ─── INIT ─── */
+(function init() {
+  if (!localStorage.getItem('jc_cookie_consent'))
+    setTimeout(() => document.getElementById('cookieBanner').classList.add('show'), 2500);
+  const stored = localStorage.getItem('jc_customer_data');
+  if (stored) { try { authSetUISignedIn(JSON.parse(stored)); } catch { localStorage.removeItem('jc_customer_data'); } }
 })();
 </script>
 </body>
